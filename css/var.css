@@ -1,0 +1,51 @@
+/* ===== GOOGLE FONTS ===== */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+/* ===== VARIABLES ===== */
+:root {
+  /* Colors */
+  --background-color: #fbf6f1;
+  --primary-color: #00ad8e;
+  --secondary-color: #c4fff0;
+  --white-color: #ffffff;
+  --dark-color: #14223b;
+  --text-grey: #656b81;
+
+  /* Typography */
+  --body-font: "DM Sans", sans-serif;
+  --biggest-font-size: 4.5rem;
+  --h1-font-size: 3.5rem;
+  --h2-font-size: 1.75rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+
+  /* Font weight */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+
+  /* Layout */
+  --container-padding: 80px;
+  --section-height: calc(100vh - 120px);
+
+  /* Z-index */
+  --z-fixed: 100;
+}
+
+/* ===== RESPONSIVE VARIABLES ===== */
+@media (max-width: 900px) {
+  :root {
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 2rem;
+    --container-padding: 40px;
+    --section-height: auto;
+  }
+}

@@ -1,18 +1,189 @@
+        <!--
+        Title : SkillVora - Career Paths Exploration System
+        Date  : 3/1/2026
+        Author: Melissa Sofia
+
+        Page  : Home Page
+        -->
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SkillVora | Career Path Exploration</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Icons -->
+        <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
+        <!-- Favicon -->
+        <link rel="icon" href="assets/icon.png">
+    </head>
 
-<p>Welcome to SkillVora</p>
-Update Changes dekat sini
-I want to make some changes to see how version control works.
-<p>Thank you for visiting!</p>  
-uupdate
+    <body>
 
-Kali ni last testing
+        <!-- ===== HEADER ===== -->
+        <header>
+        <div class="header-left">
+            <div class="logo">
+            <img src="assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
+            </div>
 
-marsya tammbah sikitt
+            <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+            </div>
+        </div>
+        </header>
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+
+        <!-- LEFT CONTENT -->
+        <div class="hero-text">
+            <h1>
+            Career Path<br>
+            Exploration
+            </h1>
+
+            <p>
+            Discover careers that match your skills,<br>
+            interests, and goals.
+            </p>
+
+            <div class="hero-buttons">
+            <a href="career.html" class="btn primary">
+                Explore Career Paths
+            </a>
+            <a href="resume-checker.html" class="btn outline">
+                Resume Checker
+            </a>
+            </div>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="hero-image">
+            <img src="assets/skillvora.png" alt="Career Exploration Illustration">
+        </div>
+
+        </section>
 
 
-</body>
+        <!-- ===== ABOUT SKILLVORA SECTION ===== -->
+        <section class="about-skillvora" id="about">
+
+        <!-- LEFT IMAGE -->
+        <div class="about-image">
+            <img src="assets/aboutskillvora.png" alt="SkillVora Resume Illustration">
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="about-content">
+
+            <h2 class="about-title">What Is SkillVora?</h2>
+            <p class="about-text">
+            SkillVora is a career path exploration platform designed to help students and
+            fresh graduates make informed career decisions.
+            </p>
+
+            <h3 class="about-subtitle">Why SkillVora Exists</h3>
+            <p class="about-text">
+            Many students struggle to identify suitable career paths and prepare effective
+            resumes. SkillVora bridges this gap by providing guided career suggestions and
+            resume improvement support.
+            </p>
+
+            <h3 class="about-subtitle">Who it is for</h3>
+            <ul class="about-list">
+            <li>Students exploring career options</li>
+            <li>Fresh graduates preparing resumes</li>
+            <li>Individuals unsure of their career direction</li>
+            </ul>
+
+        </div>
+        </section>
+
+        <!-- ===== MEET OUR TEAM SECTION ===== -->
+        <section class="team-section" id="team">
+
+        <div class="team-header">
+            <h2 class="team-title">Meet Our Team</h2>
+            <p class="team-subtitle">The people behind SkillVora</p>
+        </div>
+
+        <div class="team-container">
+
+            <div class="team-card">
+            <div class="team-image">
+                <img src="assets/team-melissa.png" alt="Melissa Sofia">
+            </div>
+            <h3>Melissa Sofia</h3>
+            <p>Project Lead</p>
+            </div>
+
+            <div class="team-card">
+            <div class="team-image">
+                <img src="assets/team-farah.png" alt="Farah Aisyah">
+            </div>
+            <h3>Farah Aisyah</h3>
+            <p>UI/UX Designer</p>
+            </div>
+
+            <div class="team-card">
+            <div class="team-image">
+                <img src="assets/team-khaulah.png" alt="Khaulah Kareema">
+            </div>
+            <h3>Khaulah Kareema</h3>
+            <p>System Analyst</p>
+            </div>
+
+            <div class="team-card">
+            <div class="team-image">
+                <img src="assets/team-marsya.png" alt="Marsya Qistina">
+            </div>
+            <h3>Marsya Qistina</h3>
+            <p>FE Developer</p>
+            </div>
+
+        </div>
+        </section>
+
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+        <div class="footer-container">
+            <img src="assets/logowhite.png" class="footer-img" alt="SkillVora Logo">
+
+            <p class="footer-quotes">
+            "Empowering your career journey"
+            </p>
+
+            <p class="footer-slogan">
+            © 2026 SkillVora. All rights reserved.
+            </p>
+        </div>
+        </footer>
+
+        <!-- ===== NAV TOGGLE SCRIPT ===== -->
+        <script>
+        const hamburger = document.querySelector(".hamburger");
+        const nav = document.querySelector(".header-left nav");
+
+        hamburger.onclick = () => {
+            nav.classList.toggle("active");
+        };
+        </script>
+
+    </body>
 </html>
-

@@ -1,0 +1,449 @@
+@import "var.css";
+
+/* ===== BASE ===== */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--background-color);
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+section {
+  padding: var(--container-padding);
+  min-height: var(--section-height);
+}
+
+/* ===== HEADER ===== */
+.nav_img_logo {
+  width: 100%;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-fixed);
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--container-padding);
+  background: var(--background-color);
+}
+
+header .header-left {
+  display: flex;
+  align-items: center;
+}
+
+header .header-left .logo {
+  width: 220px;
+}
+
+header .header-left nav {
+  margin-left: var(--space-5);
+}
+
+header .header-left nav ul {
+  display: flex;
+}
+
+nav ul li a {
+  color: var(--dark-color);
+  margin: 0 var(--space-3);
+  padding-bottom: 4px;
+  transition: 0.2s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  border-bottom: 3px solid var(--primary-color);
+}
+
+/* ===== HAMBURGER ===== */
+header .header-right {
+  display: flex;
+  align-items: center;
+}
+
+header .hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+header .hamburger div {
+  width: 25px;
+  height: 2px;
+  margin: 6px 0;
+  background: var(--dark-color);
+}
+
+/* ===== MOBILE NAV ===== */
+@media (max-width: 1100px) {
+  header {
+    height: 100px;
+    padding: 0 var(--space-3);
+  }
+
+  header .hamburger {
+    display: block;
+  }
+
+  header .header-left nav {
+    position: absolute;
+    top: -300%;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    padding: var(--space-4);
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  header .header-left nav.active {
+    top: 100px;
+  }
+
+  header .header-left nav ul {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  nav ul li a {
+    color: var(--white-color);
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    border-bottom: none;
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--container-padding);
+}
+
+/* LEFT SIDE */
+.hero-text {
+  max-width: 520px;
+}
+
+.hero-text h1 {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+}
+
+.hero-text p {
+  font-size: var(--normal-font-size);
+  color: var(--text-grey);
+  margin-bottom: var(--space-4);
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.btn {
+  padding: 14px 34px;
+  border-radius: 40px;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  transition: 0.3s ease;
+}
+
+/* Primary Button */
+.btn.primary {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+.btn.primary:hover {
+  opacity: 0.9;
+}
+
+/* Outline Button */
+.btn.outline {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn.outline:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+/* RIGHT IMAGE */
+.hero-image img {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ===== RESPONSIVE HERO ===== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    margin-top: var(--space-4);
+  }
+}
+
+/* ===== ABOUT SKILLVORA SECTION ===== */
+.about-skillvora {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--container-padding);
+  padding-left: 0;
+}
+
+/* LEFT IMAGE */
+.about-image {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 700px;
+}
+
+/* RIGHT CONTENT */
+.about-content {
+  flex: 0.8;
+  max-width: 520px;
+}
+
+.about-title {
+  font-size: var(--h2-font-size);
+  color: var(--primary-color);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-2);
+}
+
+.about-subtitle {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-bold);
+  color: var(--dark-color);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.about-text {
+  font-size: var(--normal-font-size);
+  color: var(--text-grey);
+  line-height: 1.7;
+}
+
+/* LIST */
+.about-list {
+  margin-top: var(--space-2);
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  color: var(--dark-color);
+  font-weight: var(--font-medium);
+}
+
+.about-list li::before {
+  content: "✔";
+  color: var(--primary-color);
+  font-weight: var(--font-bold);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .about-skillvora {
+    flex-direction: column;
+    text-align: center;
+    background: none;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
+  .about-list li {
+    justify-content: center;
+  }
+}
+
+/* ===== TEAM SECTION ===== */
+.team-section {
+  padding: var(--container-padding);
+  text-align: center;
+  background-color: var(--background-color);
+}
+
+.team-header {
+  margin-bottom: var(--space-5);
+}
+
+.team-title {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-bold);
+  color: var(--primary-color);
+}
+
+.team-subtitle {
+  font-size: var(--normal-font-size);
+  color: var(--text-grey);
+  margin-top: var(--space-1);
+}
+
+/* TEAM CARDS */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(4, 260px);
+  gap: 24px;
+  justify-content: center;
+}
+
+
+.team-card {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 173, 142, 0.35),
+    rgba(0, 173, 142, 0.7)
+  );
+  border-radius: 28px;
+  padding: var(--space-4);
+  width: 100%;
+  max-width: 260px;
+  color: var(--white-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* IMAGE */
+.team-image {
+  width: 100%;
+  margin-bottom: var(--space-3);
+}
+
+.team-image img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+/* TEXT */
+.team-card h3 {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-1);
+}
+
+.team-card {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 173, 142, 0.35),
+    rgba(0, 173, 142, 0.7)
+  );
+  border-radius: 28px;
+  padding: var(--space-4);
+  width: 100%;
+  max-width: 260px;
+  color: var(--white-color);
+  text-align: center;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .team-container {
+    grid-template-columns: repeat(2, 260px);
+  }
+}
+
+@media (max-width: 600px) {
+  .team-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: var(--space-5) var(--container-padding);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-img {
+  width: 100px;
+  margin-bottom: var(--space-3);
+}
+
+.footer-quotes {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-2);
+  color: var(--white-color);
+}
+
+.footer-slogan {
+  font-size: var(--small-font-size);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== FOOTER RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .footer {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .footer-img {
+    width: 70px;
+  }
+}
