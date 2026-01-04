@@ -1,0 +1,90 @@
+@import "var.css";
+@import "style.css";
+
+/* ===============================
+   RESUME CHECKER PAGE
+================================ */
+
+/* HEADER */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--container-padding);
+}
+
+.resume-header img {
+  height: 36px;
+}
+
+/* MAIN SECTION */
+.resume-section {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Background Image */
+  background-image: url("../assets/gradient.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 600px 600px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft white overlay for readability */
+.resume-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* Ensure content is above overlay */
+.resume-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* TEXT */
+.resume-title {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
+  color: var(--dark-color);
+  margin-bottom: var(--space-3);
+}
+
+.resume-text {
+  font-size: var(--normal-font-size);
+  color: var(--text-grey);
+  max-width: 420px;
+  margin-bottom: var(--space-5);
+  line-height: 1.6;
+}
+
+/* BUTTON */
+.resume-btn {
+  padding: 16px 50px;
+  border-radius: 50px;
+}
+
+/* SMALL BUTTON */
+.btn.small {
+  padding: 10px 28px;
+  font-size: var(--small-font-size);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .resume-section {
+    background-size: 360px 360px;
+  }
+
+  .resume-title {
+    font-size: var(--h2-font-size);
+  }
+}
