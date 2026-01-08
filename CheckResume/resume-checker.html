@@ -13,20 +13,22 @@
   <title>SkillVora | Resume Checker</title>
 
   <!-- Main CSS -->
-  <link rel="stylesheet" href="css/start.css">
+  <link rel="stylesheet" href="../css/start.css">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/icon.png">
+  <link rel="icon" href="../assets/icon.png">
 </head>
 <body>
 
 <!-- ===== HEADER ===== -->
 <header class="resume-header">
   <div class="logo">
-    <img src="assets/logo.png" alt="SkillVora Logo">
+     <a href="../index.html">
+      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
+    </a>
   </div>
 
-  <a href="career.html" class="btn outline small">
+  <a href="../ExploreCareer/career.html" class="btn outline small">
     Explore Career Paths
   </a>
 </header>
@@ -46,6 +48,22 @@
   </a>
 
 </section>
+
+<section 
+  id="upload">
+</section>
+
+<script>
+  fetch("upload_resume.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("upload").innerHTML = data;
+    })
+    .catch(error => {
+      console.error("Error loading upload_resume.html:", error);
+    });
+</script>
+
 
 </body>
 </html>

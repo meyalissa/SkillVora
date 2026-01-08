@@ -205,6 +205,15 @@ header .hamburger div {
   max-width: 520px;
 }
 
+.logo a {
+  display: inline-block;
+}
+
+.logo img {
+  cursor: pointer;
+}
+
+
 /* ===== RESPONSIVE HERO ===== */
 @media (max-width: 900px) {
   .hero {

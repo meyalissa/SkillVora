@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Upload Resume</title>
-
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-  }
-
-  body {
-    background-color: #ffffff;
-  }
+  @import "var.css";
+    @import "style.css";
+  
 
   /* ================= MAIN LAYOUT ================= */
   .upload-page {
@@ -105,61 +91,3 @@
       text-align: center;
     }
   }
-</style>
-</head>
-
-<body>
-
-<section class="upload-page">
-
-  <!-- LEFT SIDE -->
-  <div class="upload-left">
-    <h2>Upload your resume</h2>
-
-    <div class="upload-box" id="uploadBox">
-      <!-- hidden input -->
-      <input 
-        type="file" 
-        id="resumeInput" 
-        accept=".pdf,.doc,.docx"
-        hidden
-      >
-
-      <img src="upload-icon.png" alt="Upload icon">
-      <p>Drag and drop your resume or<br>browse file</p>
-      <span>Ex : PDF, DOC, DOCX</span>
-
-      <div id="fileName" class="file-name"></div>
-    </div>
-
-    <div class="button-wrapper">
-      <button class="check-btn">Check Resume</button>
-    </div>
-  </div>
-
-  <!-- RIGHT SIDE -->
-  <div class="upload-right">
-    <img src="uploadresume.png" alt="Resume illustration">
-  </div>
-
-</section>
-
-<!-- ================= SCRIPT ================= -->
-<script>
-  const uploadBox = document.getElementById("uploadBox");
-  const resumeInput = document.getElementById("resumeInput");
-  const fileName = document.getElementById("fileName");
-
-  uploadBox.addEventListener("click", () => {
-    resumeInput.click();
-  });
-
-  resumeInput.addEventListener("change", () => {
-    if (resumeInput.files.length > 0) {
-      fileName.textContent = resumeInput.files[0].name;
-    }
-  });
-</script>
-
-</body>
-</html>
