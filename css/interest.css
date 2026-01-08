@@ -1,16 +1,6 @@
 @import "var.css";
 @import "style.css";
-
-* {
-  box-sizing: border-box;
-  font-family: "DM Sans", sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 40px;
-  background: #fff;
-}
+@import "start.css";
 
 .container {
   max-width: 900px;
