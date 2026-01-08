@@ -3,20 +3,10 @@
 @import "start.css";
 
 
-/* Override or add to resume-header */
+/* Override*/
 .resume-header {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
-}
-
-
-
-/* rest of your CSS... */
- .container {
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 20px 20px 20px;
-    margin-top: 0 !important;
 }
 
 h2 {
@@ -27,13 +17,19 @@ h2 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-.careers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
+.container {
+  max-width: 1200px;       
+  margin: 0 auto;         
+  padding: 20px;
 }
+
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;  
+}
+
 
 .career-card {
     background: white;
@@ -125,7 +121,7 @@ h2 {
     transform: scale(0.98);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     h2 {
         font-size: 1.8rem;
         margin: 0 0 20px 0;
@@ -133,5 +129,20 @@ h2 {
 
     .careers-grid {
         grid-template-columns: 1fr;
+    }
+} */
+ @media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+        margin: 0 0 20px 0;
+    }
+
+    .careers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .career-card {
+        min-height: 350px; 
+        width: 90%; 
     }
 }

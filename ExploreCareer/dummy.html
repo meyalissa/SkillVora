@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dummy Career Selection</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .skill {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .skill.active {
+      background: #00BFA5;
+      color: white;
+      border-color: #00BFA5;
+    }
+
+    .btn {
+      background: #00BFA5;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Dummy Career Selection (Test Page)</h1>
+
+  <!-- INTEREST -->
+  <div class="section">
+    <h2>Interest</h2>
+    <select id="interest">
+      <option value="">-- Select Interest --</option>
+      <option value="Technology">Technology</option>
+      <option value="Design & Creativity">Design & Creativity</option>
+      <option value="Data & Analytics">Data & Analytics</option>
+      <option value="Business & Management">Business & Management</option>
+      <option value="Communication">Communication</option>
+      <option value="Education">Education</option>
+    </select>
+  </div>
+
+  <!-- BACKGROUND -->
+  <div class="section">
+    <h2>Background</h2>
+    <select id="background">
+      <option value="">-- Select Background --</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Information Technology">Information Technology</option>
+      <option value="Software Engineering">Software Engineering</option>
+      <option value="Web Technologies">Web Technologies</option>
+      <option value="Data Science">Data Science</option>
+      <option value="Information Systems">Information Systems</option>
+    </select>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <h2>Skills (max 3)</h2>
+    <div class="skills">
+      <div class="skill">Problem-solving</div>
+      <div class="skill">Creativity</div>
+      <div class="skill">Communication</div>
+      <div class="skill">Analytical thinking</div>
+      <div class="skill">Practical or hands-on skills</div>
+      <div class="skill">Organisational skills</div>
+
+    </div>
+  </div>
+
+  <button class="btn" onclick="saveAndGo()">Go to Suggested Careers</button>
+
+  <script>
+    const skillElements = document.querySelectorAll(".skill");
+    let selectedSkills = [];
+
+    skillElements.forEach(skill => {
+      skill.addEventListener("click", () => {
+        const skillName = skill.textContent;
+
+        if (skill.classList.contains("active")) {
+          skill.classList.remove("active");
+          selectedSkills = selectedSkills.filter(s => s !== skillName);
+        } else {
+          if (selectedSkills.length >= 3) {
+            alert("You can select up to 3 skills only.");
+            return;
+          }
+          skill.classList.add("active");
+          selectedSkills.push(skillName);
+        }
+      });
+    });
+
+    function saveAndGo() {
+      const interest = document.getElementById("interest").value;
+      const background = document.getElementById("background").value;
+
+      if (!interest || !background || selectedSkills.length === 0) {
+        alert("Please select interest, background and at least 1 skill.");
+        return;
+      }
+
+      localStorage.setItem("interest", interest);
+      localStorage.setItem("background", background);
+      localStorage.setItem("skills", JSON.stringify(selectedSkills));
+
+      window.location.href = "suggestion.html";
+    }
+  </script>
+
+</body>
+</html>
