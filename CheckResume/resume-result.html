@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillVora | Resume Checker</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../css/start.css">
+  <link rel="stylesheet" href="../css/resume-result.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/icon.png">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="resume-header">
+  <div class="logo">
+     <a href="../index.html">
+      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
+    </a>
+  </div>
+
+  <a href="../ExploreCareer/career.html" class="btn outline small">
+    Explore Career Paths
+  </a>
+</header>
+
+<body>
+    
+<!-- ================= RESUME SUMMARY ================= -->
+<section class="summary-page" id="summaryPage">
+
+  <h2 class="summary-title">Your Resume Summary</h2>
+
+  <div class="summary-card">
+
+    <!-- LEFT: SCORE -->
+    <div class="score-section">
+      <p class="score-label">Resume Score :</p>
+
+      <div class="circle-wrap">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          <div class="inside-circle">
+            85/100
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="info-section">
+      <div class="info-box">
+        <p>ATS Readability:</p>
+        <span class="good">GOOD</span>
+      </div>
+
+      <div class="info-box">
+        <p>Section Completeness:</p>
+        <span class="complete">COMPLETE</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= FEATURES ANALYZED ================= -->
+<div class="analysis-card">
+
+  <!-- LEFT -->
+  <div class="analysis-left">
+    <h3>Features analyzed</h3>
+
+    <div class="feature">
+      <div class="feature-header">
+        <span>Formatting</span>
+        <span class="issue ok">1 issues to fix</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress green" style="width: 80%;"></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header">
+        <span>Skills Match</span>
+        <span class="issue ok">1 issues to fix</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress green" style="width: 75%;"></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header">
+        <span>Content Quality</span>
+        <span class="issue warn">2 issues to fix</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress yellow" style="width: 60%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="analysis-right">
+    <h3>Overall Assessment</h3>
+    <div class="assessment-box">
+      <p>
+        Your resume in good shape, but there are a few areas that need improvement.
+        Below is detailed feedback and suggestion for enhancing your resume.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= FEEDBACK & SUGGESTION ================= -->
+<div class="feedback-section">
+
+  <!-- LEFT: DROPDOWN -->
+  <div class="feedback-left">
+    <h3>Feedback and Suggestion</h3>
+
+    <!-- Formatting -->
+    <details class="accordion" open>
+      <summary>
+        <span>📄 Formatting</span>
+      </summary>
+
+      <div class="accordion-content">
+        <div class="check-item">
+          ✓ Well-organized heading structure
+          <ul>
+            <li>Experience</li>
+            <li>Education</li>
+            <li>Skills</li>
+          </ul>
+        </div>
+
+        <div class="warn-item">⚠ Resume is too long: aim for 1–2 pages</div>
+
+        <div class="warn-item">⚠ Consider using a more readable font like Arial, Calibri or Verdana</div>
+
+      </div>
+    </details>
+
+    <!-- Skills Match -->
+    <details class="accordion">
+      <summary>
+        <span>✓ Skills Match</span>
+      </summary>
+       <div class="accordion-content">
+        <div class="check-item">
+            ✓ Relevant skills are listed for the targeted role <br>
+            ✓ Technical and soft skills are clearly separated
+
+            <div class="warn-item"> ⚠ Skill proficiency level is not clearly stated</div>
+
+        </div>
+                <br> Suggestion:
+        <ul>
+            <li> ✯ Include proficiency levels (Beginner / Intermediate / Advanced)</li>
+          </ul>
+
+      </div>
+    </details>
+
+    <!-- Content Quality -->
+    <details class="accordion">
+      <summary>
+        <span>📑 Content Quality</span>
+      </summary>
+             <div class="accordion-content">
+        <div class="check-item">
+          ✓ Job responsibilities are clearly described <br>
+          ✓ Education and experience sections are included
+
+        <div class="warn-item">⚠ Some bullet points are too generic</div>
+        <div class="warn-item">⚠ Achievements are not clearly highlighted</div>
+        </div>
+            <br> Suggestion:
+        <ul>
+            <li> ✯ Use action verbs such as Developed, Managed, Analyzed</li>
+            <li> ✯ Focus on results instead of listing tasks</li>
+          </ul>
+
+      </div>
+
+    </details>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="feedback-right">
+
+    <!-- Improve resume -->
+    <div class="improve-box">
+      <h4>💡 Improve your resume</h4>
+      <ul>
+        <li>Use bullet points to highlight achievements</li>
+        <li>Quantify results, e.g. “Increased sales by 19%”</li>
+        <li>Include a “Key Skills” section</li>
+      </ul>
+    </div>
+
+    <!-- Skillvora match -->
+    <div class="match-box">
+      <h4>✨ Skillvora Match: Data Analyst</h4>
+      <div class="match-percent">70%</div>
+
+      <div class="match-bar">
+        <div class="match-fill"></div>
+      </div>
+
+      <p>Your skill and experience suitable for a data analyst career!</p>
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+  <a href="../ExploreCareer/career.html" class="btn primary">
+    Explore Career Paths</a>
+    <a href="..\CheckResume\resume-checker.html" class="btn outline">
+                Get Report </a>
+    </div>
+
+
+</section>
+</body>
+</html>

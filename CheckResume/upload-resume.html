@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="../css/upload_resume.css">
+
+<section class="upload-page">
+
+  <!-- LEFT SIDE -->
+  <div class="upload-left">
+    <h2>Upload your resume</h2>
+
+    <div class="upload-box" id="uploadBox">
+      <input 
+        type="file" 
+        id="resumeInput" 
+        accept=".pdf,.doc,.docx"
+        hidden
+      >
+
+      <img src="../assets/upload-icon.png" alt="Upload icon">
+      <p>Drag and drop your resume or<br>browse file</p>
+      <span>Ex : PDF, DOC, DOCX</span>
+
+      <div id="fileName" class="file-name"></div>
+    </div>
+
+    <div class="button-wrapper">
+  <a href="../CheckResume/resume-result.html" class="btn primary resume-btn">
+    Check Resume
+  </a>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="upload-right">
+    <img src="../assets/uploadresume.png" alt="Resume illustration">
+  </div>
+
+</section>
+
+<script>
+  const uploadBox = document.getElementById("uploadBox");
+  const resumeInput = document.getElementById("resumeInput");
+  const fileName = document.getElementById("fileName");
+
+  uploadBox.addEventListener("click", () => {
+    resumeInput.click();
+  });
+
+  resumeInput.addEventListener("change", () => {
+    if (resumeInput.files.length > 0) {
+      fileName.textContent = resumeInput.files[0].name;
+    }
+  });
+</script>
