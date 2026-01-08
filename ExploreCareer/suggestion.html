@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggested Careers</title>
+    <link rel="stylesheet" href="../css/suggest.css" />
+</head>
+<body>
+    <header class="resume-header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/logo.png"
+            class="nav_img_logo"
+            alt="SkillVora Logo"
+          />
+        </a>
+      </div>
+    </header>
+    <div class="container">
+        <h2>Suggested Careers</h2>
+        <div class="careers-grid">
+            <!-- Software Developer Card -->
+            <div class="career-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Laptop -->
+                        <rect x="40" y="60" width="120" height="80" rx="5" fill="#e0e0e0"/>
+                        <rect x="50" y="70" width="100" height="60" fill="#00BFA5"/>
+                        <!-- Code lines -->
+                        <line x1="60" y1="85" x2="90" y2="85" stroke="white" stroke-width="2"/>
+                        <line x1="70" y1="95" x2="100" y2="95" stroke="white" stroke-width="2"/>
+                        <line x1="60" y1="105" x2="85" y2="105" stroke="white" stroke-width="2"/>
+                        <line x1="70" y1="115" x2="110" y2="115" stroke="white" stroke-width="2"/>
+                        <!-- Keyboard base -->
+                        <rect x="30" y="140" width="140" height="10" rx="2" fill="#bdbdbd"/>
+                        <!-- Person -->
+                        <circle cx="100" cy="35" r="12" fill="#333"/>
+                        <path d="M 88 47 Q 100 55 112 47" fill="#333"/>
+                    </svg>
+                </div>
+                <h2 class="career-title">Software Developer</h2>
+                <p class="career-description">Develop and maintains software applications</p>
+                <div class="skills">
+                    <span class="skill-tag">Coding</span>
+                    <span class="skill-tag">Problem Solving</span>
+                </div>
+                <button class="view-details-btn">View Details</button>
+            </div>
+
+            <!-- UI/UX Designer Card -->
+            <div class="career-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Blueprint/wireframe -->
+                        <rect x="50" y="40" width="100" height="120" rx="5" fill="#4A90E2" opacity="0.2"/>
+                        <rect x="60" y="50" width="80" height="15" fill="#4A90E2"/>
+                        <rect x="60" y="75" width="35" height="35" fill="#E8F4F8" stroke="#4A90E2" stroke-width="2"/>
+                        <rect x="105" y="75" width="35" height="35" fill="#E8F4F8" stroke="#4A90E2" stroke-width="2"/>
+                        <rect x="60" y="120" width="80" height="8" fill="#4A90E2" opacity="0.5"/>
+                        <rect x="60" y="135" width="60" height="8" fill="#4A90E2" opacity="0.5"/>
+                        <!-- Two people -->
+                        <circle cx="30" cy="100" r="10" fill="#FFA726"/>
+                        <path d="M 20 110 Q 30 115 40 110" fill="#FFA726"/>
+                        <circle cx="170" cy="100" r="10" fill="#00BFA5"/>
+                        <path d="M 160 110 Q 170 115 180 110" fill="#00BFA5"/>
+                        <!-- Connection dots -->
+                        <circle cx="45" cy="105" r="2" fill="#666"/>
+                        <circle cx="55" cy="105" r="2" fill="#666"/>
+                        <circle cx="145" cy="105" r="2" fill="#666"/>
+                        <circle cx="155" cy="105" r="2" fill="#666"/>
+                    </svg>
+                </div>
+                <h2 class="career-title">UI/UX Designer</h2>
+                <p class="career-description">Designs user-friendly interfaces</p>
+                <div class="skills">
+                    <span class="skill-tag">Creativity</span>
+                    <span class="skill-tag">Wireframing</span>
+                </div>
+                <button class="view-details-btn">View Details</button>
+            </div>
+
+            <!-- Data Analyst Card -->
+            <div class="career-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pie chart -->
+                        <circle cx="70" cy="70" r="35" fill="#4A90E2"/>
+                        <path d="M 70 70 L 70 35 A 35 35 0 0 1 95 90 Z" fill="#00BFA5"/>
+                        <!-- Bar chart -->
+                        <rect x="120" y="90" width="15" height="40" fill="#4A90E2"/>
+                        <rect x="140" y="70" width="15" height="60" fill="#00BFA5"/>
+                        <rect x="160" y="80" width="15" height="50" fill="#4A90E2"/>
+                        <!-- Line graph -->
+                        <polyline points="120,50 135,45 150,55 165,40" fill="none" stroke="#FFA726" stroke-width="3"/>
+                        <circle cx="120" cy="50" r="3" fill="#FFA726"/>
+                        <circle cx="135" cy="45" r="3" fill="#FFA726"/>
+                        <circle cx="150" cy="55" r="3" fill="#FFA726"/>
+                        <circle cx="165" cy="40" r="3" fill="#FFA726"/>
+                        <!-- Database -->
+                        <ellipse cx="160" cy="145" rx="25" ry="8" fill="#4A90E2"/>
+                        <rect x="135" y="145" width="50" height="20" fill="#4A90E2"/>
+                        <ellipse cx="160" cy="165" rx="25" ry="8" fill="#4A90E2"/>
+                    </svg>
+                </div>
+                <h2 class="career-title">Data Analyst</h2>
+                <p class="career-description">Analyses and interprets data</p>
+                <div class="skills">
+                    <span class="skill-tag">Statistics</span>
+                    <span class="skill-tag">Excel</span>
+                </div>
+                <button class="view-details-btn">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.view-details-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const careerTitle = this.closest('.career-card').querySelector('.career-title').textContent;
+                alert(`Viewing details for: ${careerTitle}`);
+            });
+        });
+    </script>
+</body>
+</html>
