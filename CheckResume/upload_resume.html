@@ -4,7 +4,7 @@
 
   <!-- LEFT SIDE -->
   <div class="upload-left">
-    <h2>Upload your resume</h2>
+    <h2>Upload Your Resume</h2>
 
     <div class="upload-box" id="uploadBox">
       <input 
@@ -21,8 +21,17 @@
       <div id="fileName" class="file-name"></div>
     </div>
 
+    <div class="error-text" id="errorText">
+      Please upload your resume before proceeding.
+    </div>
+
     <div class="button-wrapper">
-      <button class="check-btn">Check Resume</button>
+      <button 
+        type="button"
+        class="btn primary check-btn"
+        id="checkBtn">
+        Check Resume
+      </button>
     </div>
   </div>
 
@@ -32,19 +41,3 @@
   </div>
 
 </section>
-
-<script>
-  const uploadBox = document.getElementById("uploadBox");
-  const resumeInput = document.getElementById("resumeInput");
-  const fileName = document.getElementById("fileName");
-
-  uploadBox.addEventListener("click", () => {
-    resumeInput.click();
-  });
-
-  resumeInput.addEventListener("change", () => {
-    if (resumeInput.files.length > 0) {
-      fileName.textContent = resumeInput.files[0].name;
-    }
-  });
-</script>
