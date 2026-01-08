@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillVora | Resume Checker</title>
 
-  <link rel="stylesheet" href="../css/start.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" href="../assets/icon.png">
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="resume-header">
   <div class="logo">
     <a href="../index.html">
@@ -23,7 +22,6 @@
   </a>
 </header>
 
-<!-- ===== HERO ===== -->
 <section class="resume-section">
   <h1 class="resume-title">Resume Checker</h1>
   <p class="resume-text">
@@ -33,17 +31,15 @@
   <a href="#upload" class="btn primary resume-btn">Check Now</a>
 </section>
 
-<!-- ===== UPLOAD CONTAINER ===== -->
+<!-- Upload component will be injected here -->
 <section id="upload"></section>
 
-<!-- ===== LOAD UPLOAD COMPONENT ===== -->
 <script>
 fetch("upload_resume.html")
-  .then(response => response.text())
+  .then(res => res.text())
   .then(html => {
     document.getElementById("upload").innerHTML = html;
 
-    /* ===== NOW ELEMENTS EXIST ===== */
     const uploadBox = document.getElementById("uploadBox");
     const resumeInput = document.getElementById("resumeInput");
     const fileName = document.getElementById("fileName");
@@ -52,12 +48,10 @@ fetch("upload_resume.html")
 
     let selectedFile = null;
 
-    // Open file explorer
     uploadBox.addEventListener("click", () => {
       resumeInput.click();
     });
 
-    // File selected
     resumeInput.addEventListener("change", () => {
       if (resumeInput.files.length > 0) {
         selectedFile = resumeInput.files[0];
@@ -66,7 +60,6 @@ fetch("upload_resume.html")
       }
     });
 
-    // Check Resume button
     checkBtn.addEventListener("click", () => {
       if (!selectedFile) {
         errorText.classList.add("show");
