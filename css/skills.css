@@ -1,0 +1,136 @@
+/* Required imports */
+@import "var.css";
+@import "style.css";
+@import "start.css";
+
+/* ===============================
+   SKILLS PAGE ONLY
+================================ */
+
+/* Keep SkillVora logo size consistent */
+header .nav_img_logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Layout */
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Step header */
+.step-header {
+  margin-bottom: 32px;
+}
+
+.step-title {
+  font-size: 14px;
+  color: #7a7a7a;
+}
+
+.progress-bar {
+  margin-top: 10px;
+  height: 8px;
+  background: #eeeeee;
+  border-radius: 10px;
+}
+
+.progress-fill {
+  width: 60%; /* Step 2 completed */
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Title */
+h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 8px 0 8px;
+  font-size: 14px;
+  color: #7a7a7a;
+}
+
+.helper-text {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 26px;
+}
+
+/* Skills */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid #dddddd;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Icons */
+.skill svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Active */
+.skill.active {
+  background: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* Footer */
+.skills-footer {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Back button */
+.back-btn {
+  background: #ffffff;
+  border: 1.5px solid #cccccc;
+  color: #6b7280;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Next button */
+.next-btn {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+
+/* Disabled Next */
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
