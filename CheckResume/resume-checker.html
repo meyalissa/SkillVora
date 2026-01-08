@@ -1,10 +1,3 @@
-        <!--
-        Title : SkillVora - Career Paths Exploration System
-        Date  : 3/1/2026
-        Dev: Farah & Melissa
-
-        Page  : Home Page
-        -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillVora | Resume Checker</title>
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="../css/start.css">
-
-  <!-- Favicon -->
   <link rel="icon" href="../assets/icon.png">
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="resume-header">
   <div class="logo">
-     <a href="../index.html">
+    <a href="../index.html">
       <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
     </a>
   </div>
@@ -33,37 +22,61 @@
   </a>
 </header>
 
-<!-- ===== RESUME CHECKER SECTION ===== -->
 <section class="resume-section">
-
   <h1 class="resume-title">Resume Checker</h1>
-
   <p class="resume-text">
     Review your resume structure and improve it to<br>
     match your career goals
   </p>
-
-  <a href="#upload" class="btn primary resume-btn">
-    Check Now
-  </a>
-
+  <a href="#upload" class="btn primary resume-btn">Check Now</a>
 </section>
 
-<section 
-  id="upload">
-</section>
+<!-- Upload component will be injected here -->
+<section id="upload"></section>
 
 <script>
-  fetch("upload_resume.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("upload").innerHTML = data;
-    })
-    .catch(error => {
-      console.error("Error loading upload_resume.html:", error);
-    });
-</script>
+fetch("upload-resume.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("upload").innerHTML = html;
 
+    const uploadBox = document.getElementById("uploadBox");
+    const resumeInput = document.getElementById("resumeInput");
+    const fileName = document.getElementById("fileName");
+    const checkBtn = document.getElementById("checkBtn");
+    const errorText = document.getElementById("errorText");
+
+    let selectedFile = null;
+
+    uploadBox.addEventListener("click", () => {
+      resumeInput.click();
+    });
+
+    resumeInput.addEventListener("change", () => {
+      if (resumeInput.files.length > 0) {
+        selectedFile = resumeInput.files[0];
+        fileName.textContent = selectedFile.name;
+        errorText.classList.remove("show");
+      }
+    });
+
+    checkBtn.addEventListener("click", () => {
+      if (!selectedFile) {
+        errorText.classList.add("show");
+        return;
+      }
+
+      checkBtn.textContent = "Analyzing...";
+      checkBtn.disabled = true;
+
+      setTimeout(() => {
+        localStorage.setItem("resumeFileName", selectedFile.name);
+        window.location.href = "resume-result.html";
+      }, 2000);
+    });
+  })
+  .catch(err => console.error(err));
+</script>
 
 </body>
 </html>
