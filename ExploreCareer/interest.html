@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <!-- Header (uses existing global styles) -->
+    <!-- Header -->
     <header class="resume-header">
       <div class="logo">
         <a href="../index.html">
@@ -35,7 +35,7 @@
       <div class="step-header">
         <span class="step-title">Step 1 of 3 – <strong>Interests</strong></span>
         <div class="progress-bar">
-          <div class="progress-fill"></div>
+          <div class="progress-fill" id="progressFill"></div>
         </div>
       </div>
 
@@ -43,28 +43,26 @@
       <p class="subtitle">Choose which careers interests.</p>
 
       <div class="interest-list">
-        <!-- Technology -->
-        <button class="interest active">
+        <button class="interest">
           <svg viewBox="0 0 24 24">
             <rect x="3" y="4" width="18" height="12" rx="2" />
             <rect x="9" y="18" width="6" height="2" />
           </svg>
           Technology
         </button>
-        <!-- Design & Creativity -->
+
         <button class="interest">
           <svg viewBox="0 0 24 24">
             <path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75z" />
             <path
               d="M20.7 7.04a1 1 0 0 0 0-1.41l-2.34-2.34
-             a1 1 0 0 0-1.41 0l-1.83 1.83
-             3.75 3.75z"
+               a1 1 0 0 0-1.41 0l-1.83 1.83
+               3.75 3.75z"
             />
           </svg>
           Design & Creativity
         </button>
 
-        <!-- Business -->
         <button class="interest">
           <svg viewBox="0 0 24 24">
             <rect x="3" y="7" width="18" height="12" rx="2" />
@@ -73,7 +71,6 @@
           Business & Management
         </button>
 
-        <!-- Data -->
         <button class="interest">
           <svg viewBox="0 0 24 24">
             <rect x="4" y="10" width="3" height="8" />
@@ -83,7 +80,6 @@
           Data & Analytics
         </button>
 
-        <!-- Communication -->
         <button class="interest">
           <svg viewBox="0 0 24 24">
             <path d="M4 4h16v10H8l-4 4z" />
@@ -91,7 +87,6 @@
           Communication
         </button>
 
-        <!-- Education -->
         <button class="interest">
           <svg viewBox="0 0 24 24">
             <path d="M12 3L2 8l10 5 10-5z" />
@@ -101,10 +96,40 @@
         </button>
       </div>
 
-      <!-- Next Button -->
       <div class="interest-footer">
-        <button class="next-btn">Next</button>
+        <button class="next-btn" id="nextBtn">Next</button>
       </div>
     </div>
+
+    <!-- ✅ UPDATED TOGGLE LOGIC -->
+    <script>
+      const interestButtons = document.querySelectorAll(".interest");
+      const progressFill = document.getElementById("progressFill");
+      const nextBtn = document.getElementById("nextBtn");
+
+      // Initial state
+      progressFill.style.width = "0%";
+      nextBtn.disabled = true;
+
+      interestButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const isActive = button.classList.contains("active");
+
+          // Remove all actives
+          interestButtons.forEach((btn) => btn.classList.remove("active"));
+
+          if (!isActive) {
+            // Activate clicked
+            button.classList.add("active");
+            progressFill.style.width = "30%";
+            nextBtn.disabled = false;
+          } else {
+            // Unselect → back to inactive state
+            progressFill.style.width = "0%";
+            nextBtn.disabled = true;
+          }
+        });
+      });
+    </script>
   </body>
 </html>
