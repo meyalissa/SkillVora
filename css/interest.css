@@ -120,3 +120,8 @@ h2 {
 .next-btn:hover {
   opacity: 0.9;
 }
+/* NEW — disabled Next button state */
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
