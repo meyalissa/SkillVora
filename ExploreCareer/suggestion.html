@@ -34,6 +34,14 @@ const careerData = [
     interests: ["Technology"],
     backgrounds: ["Computer Science", "Software Engineering", "Information Technology"],
     skills: ["Problem-solving", "Analytical thinking", "Practical / Hands-on Skills"],
+    requirements: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum C (Recommended B)" },
+        { name: "English", grade: "Minimum C" }
+      ],
+      notes: "Interest in coding and logical thinking is important"
+    },
     svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#00BFA5"/></svg>`
   },
   {
@@ -47,6 +55,14 @@ const careerData = [
     interests: ["Technology"],
     backgrounds: ["Computer Science", "Software Engineering"],
     skills: ["Problem-solving", "Analytical thinking", "Practical / Hands-on Skills"],
+    requirements: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum C (Recommended B)" },
+        { name: "Additional Mathematics", grade: "Recommended" }
+      ],
+      notes: "Strong problem-solving and system thinking are helpful"
+    },
     svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#4A90E2"/></svg>`
   },
   {
@@ -60,6 +76,14 @@ const careerData = [
     interests: ["Technology", "Design & Creativity"],
     backgrounds: ["Web Technologies", "Software Engineering"],
     skills: ["Creativity", "Practical / Hands-on Skills", "Problem-solving"],
+    requirements: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "English", grade: "Minimum C" },
+        { name: "Mathematics", grade: "Minimum C" }
+      ],
+      notes: "Creativity and basic design interest are advantages"
+    },
     svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFA726"/></svg>`
   },
   {
@@ -73,6 +97,15 @@ const careerData = [
     interests: ["Technology"],
     backgrounds: ["Information Systems", "Computer Science"],
     skills: ["Analytical thinking", "Communication", "Problem-solving"],
+    requirements: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum C (Recommended B)" },
+        { name: "English", grade: "Minimum B" }
+      ],
+      notes: "Good communication and analytical skills are important"
+    },
+
     svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#9C27B0"/></svg>`
   },
   {
@@ -86,6 +119,14 @@ const careerData = [
     interests: ["Technology"],
     backgrounds: ["Information Technology"],
     skills: ["Problem-solving", "Communication", "Practical / Hands-on Skills"],
+    requirements: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum C" },
+        { name: "ICT / Computer Studies", grade: "Recommended" }
+      ],
+      notes: "Hands-on technical skills are more important than theory"
+    },
     svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#607D8B"/></svg>`
   }
 ];
@@ -147,6 +188,21 @@ function displayCareers() {
         ${career.skills.map(skill =>
           `<span class="skill-tag">${skill}</span>`
         ).join("")}
+      </div>
+        <div class="requirements">
+        <h4>Requirements</h4>
+        <p class="education">
+          <strong>Education:</strong> ${career.requirements.education}
+        </p>
+        <ul class="subjects">
+          ${career.requirements.subjects.map(sub =>
+            `<li>
+              <span class="subject-name">${sub.name}</span>
+              <span class="subject-grade">${sub.grade}</span>
+            </li>`
+          ).join("")}
+        </ul>
+        <p class="notes">${career.requirements.notes}</p>
       </div>
       <button class="view-details-btn">View Details</button>
     `;
