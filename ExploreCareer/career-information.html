@@ -5,64 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Information</title>
     <link rel="stylesheet" href="../css/career-info.css" />
-
 </head>
 <body>
-    <header class="resume-header">
-      <div class="logo">
-        <a href="../index.html">
-          <img
-            src="../assets/logo.png"
-            class="nav_img_logo"
-            alt="SkillVora Logo"
-          />
-        </a>
-      </div>
-    </header>
-    <div class="container">
-        <div class="header">
-            <div class="breadcrumb">
-                Suggested Careers > <span>Software Developer</span>
-            </div>
-            <button class="back-btn" onclick="window.location.href='suggestion.html'">Back to suggestions</button>
+<header class="resume-header">
+  <div class="logo">
+    <a href="../index.html">
+      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo" />
+    </a>
+  </div>
+</header>
+
+<div class="container">
+    <div class="header">
+        <div class="breadcrumb">
+            Suggested Careers > <span id="careerBreadcrumb"></span>
         </div>
+        <button class="back-btn" onclick="window.location.href='suggestion.html'">Back to suggestions</button>
+    </div>
 
-        <div class="hero">
-            <div class="hero-image">
-                <div class="illustration"></div>
-            </div>
-            <div class="hero-content">
-                <h1>Software Developer</h1>
-                <p>Develop and maintains software applications to meet user needs</p>
-            </div>
+    <div class="hero">
+        <div class="hero-image">
+            <div class="illustration" id="careerSVG"></div>
         </div>
-
-        <div class="content">
-            <div class="section">
-                <h2>About the role</h2>
-                <div class="role-item">
-                    <div class="checkmark"></div>
-                    <p>Writes and tests code for new software applications</p>
-                </div>
-                <div class="role-item">
-                    <div class="checkmark"></div>
-                    <p>Collaborates with teams to identify and fix software issues</p>
-                </div>
-                <div class="role-item">
-                    <div class="checkmark"></div>
-                    <p>Continually improves applications to enhance functionality and user experience</p>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Key Skills & Qualifications</h2>
-                <div class="skills">
-                    <div class="skill-tag">HTML</div>
-                    <div class="skill-tag">Javascript</div>
-                    <div class="skill-tag">Problem Solving</div>
-                </div>
-            </div>
+        <div class="hero-content">
+            <h1 id="careerTitle"></h1>
+            <p id="careerDescription"></p>
         </div>
     </div>
+
+    <div class="content">
+        <div class="section">
+            <h2>About the role</h2>
+            <div id="careerRoles"></div>
+        </div>
+
+        <div class="section">
+            <h2>Key Skills & Qualifications</h2>
+            <div class="skills" id="careerSkills"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+  const career = JSON.parse(localStorage.getItem("selectedCareer"));
+
+  if (!career) {
+    window.location.href = "suggestion.html";
+  }
+
+  // Set breadcrumb, title, description
+  document.getElementById("careerBreadcrumb").textContent = career.title;
+  document.getElementById("careerTitle").textContent = career.title;
+  document.getElementById("careerDescription").textContent = career.description;
+
+  // Set SVG / illustration
+  document.getElementById("careerSVG").innerHTML = career.svg;
+
+  // Populate roles
+  const rolesContainer = document.getElementById("careerRoles");
+  (career.roles || []).forEach(role => {
+    const item = document.createElement("div");
+    item.className = "role-item";
+    item.innerHTML = `<div class="checkmark"></div><p>${role}</p>`;
+    rolesContainer.appendChild(item);
+  });
+
+  // Populate skills
+  const skillsContainer = document.getElementById("careerSkills");
+  (career.skills || []).forEach(skill => {
+    const tag = document.createElement("div");
+    tag.className = "skill-tag";
+    tag.textContent = skill;
+    skillsContainer.appendChild(tag);
+  });
+</script>
 </body>
 </html>
