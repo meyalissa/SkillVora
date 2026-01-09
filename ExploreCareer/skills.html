@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Select Your Skills</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../css/skills.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="resume-header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/logo.png"
+            class="nav_img_logo"
+            alt="SkillVora Logo"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Step -->
+      <div class="step-header">
+        <span class="step-title">Step 3 of 3 – <strong>Skills</strong></span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <h2>Select Your Skills</h2>
+      <p class="subtitle">Choose skills you have or enjoy using.</p>
+      <p class="helper-text">You may select up to 3 options</p>
+
+      <div class="skills-list">
+        <button class="skill">
+          <span class="material-symbols-rounded icon">psychology</span>
+          Problem-solving
+        </button>
+
+        <button class="skill">
+          <span class="material-symbols-rounded icon">chat</span>
+          Communication
+        </button>
+
+        <button class="skill">
+          <span class="material-symbols-rounded icon">palette</span>
+          Creativity
+        </button>
+
+        <button class="skill">
+          <span class="material-symbols-rounded icon">analytics</span>
+          Analytical thinking
+        </button>
+
+        <button class="skill">
+          <span class="material-symbols-rounded icon">build</span>
+          Practical or hands-on skills
+        </button>
+
+        <button class="skill">
+          <span class="material-symbols-rounded icon">inventory_2</span>
+          Organisational skills
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="skills-footer">
+        <button
+          class="back-btn"
+          onclick="window.location.href='background.html'"
+        >
+          Back
+        </button>
+        <a href="suggested-careers.html"></a>
+        <button class="next-btn" id="nextBtn" disabled>
+          Show Suggested Careers
+    
+        </button></a>
+      </div>
+    </div>
+
+    <!-- Skills selection logic -->
+    <script>
+      const skillButtons = document.querySelectorAll(".skill");
+      const progressFill = document.getElementById("progressFill");
+      const nextBtn = document.getElementById("nextBtn");
+
+      // Initial state
+      progressFill.style.width = "60%";
+      nextBtn.disabled = true;
+
+      skillButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const activeSkills = document.querySelectorAll(".skill.active");
+
+          if (button.classList.contains("active")) {
+            button.classList.remove("active");
+          } else {
+            if (activeSkills.length >= 3) return;
+            button.classList.add("active");
+          }
+
+          const selectedCount =
+            document.querySelectorAll(".skill.active").length;
+
+          if (selectedCount > 0) {
+            progressFill.style.width = "100%";
+            nextBtn.disabled = false;
+          } else {
+            progressFill.style.width = "60%";
+            nextBtn.disabled = true;
+          }
+        });
+      });
+
+      // Go to suggested careers page
+      nextBtn.addEventListener("click", () => {
+        if (!nextBtn.disabled) {
+          window.location.href = "suggested-careers.html";
+        }
+      });
+    </script>
+  </body>
+</html>

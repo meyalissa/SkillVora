@@ -65,15 +65,21 @@ fetch("upload-resume.html")
         errorText.classList.add("show");
         return;
       }
-
+      // Fake analysis values
+      const score = Math.floor(Math.random() * 21) + 70; // 70–90
+      const ats = score > 80 ? "GOOD" : "FAIR";
+      const completeness = score > 75 ? "COMPLETE" : "INCOMPLETE";
       checkBtn.textContent = "Analyzing...";
       checkBtn.disabled = true;
-
       setTimeout(() => {
         localStorage.setItem("resumeFileName", selectedFile.name);
+        localStorage.setItem("resumeScore", score);
+        localStorage.setItem("resumeATS", ats);
+        localStorage.setItem("resumeCompleteness", completeness);
         window.location.href = "resume-result.html";
       }, 2000);
     });
+
   })
   .catch(err => console.error(err));
 </script>

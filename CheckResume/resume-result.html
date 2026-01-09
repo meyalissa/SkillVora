@@ -50,7 +50,7 @@
             <div class="fill"></div>
           </div>
           <div class="inside-circle">
-            85/100
+            <!-- 85/100 -->
           </div>
         </div>
       </div>
@@ -236,5 +236,27 @@
 
 
 </section>
+
+<script>
+  const fileName = localStorage.getItem("resumeFileName");
+  const score = parseInt(localStorage.getItem("resumeScore")) || 85;
+
+  // Update score text
+  document.querySelector(".inside-circle").textContent = score + "/100";
+
+  // Calculate rotation (0–180deg max for mask-based circle)
+  const rotation = Math.min(score * 1.8, 180);
+
+  // Rotate progress masks safely
+  document.querySelector(".mask.full").style.transform =
+    `rotate(${rotation}deg)`;
+
+  if (score > 50) {
+    document.querySelector(".mask.half").style.transform =
+      `rotate(${rotation - 180}deg)`;
+  }
+</script>
+
+
 </body>
 </html>
