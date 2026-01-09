@@ -185,9 +185,9 @@ function displayCareers() {
       <h3 class="career-title">${career.title}</h3>
       <p class="career-description">${career.description}</p>
       <div class="skills">
-        ${career.skills.map(skill =>
-          `<span class="skill-tag">${skill}</span>`
-        ).join("")}
+        ${career.skills
+          .map((skill) => `<span class="skill-tag">${skill}</span>`)
+          .join("")}
       </div>
         <div class="requirements">
         <h4>Requirements</h4>
@@ -207,17 +207,19 @@ function displayCareers() {
       <button class="view-details-btn">View Details</button>
     `;
 
-    // view detail button
-    card.querySelector(".view-details-btn").addEventListener("click", () => {
-      localStorage.setItem("selectedCareer", JSON.stringify(career));
-      window.location.href = "career-information.html";
-    });
+          // view detail button
+          card
+            .querySelector(".view-details-btn")
+            .addEventListener("click", () => {
+              localStorage.setItem("selectedCareer", JSON.stringify(career));
+              window.location.href = "career-information.html";
+            });
 
-    grid.appendChild(card);
-  });
-}
+          grid.appendChild(card);
+        });
+      }
 
-document.addEventListener("DOMContentLoaded", displayCareers);
-</script>
-</body>
+      document.addEventListener("DOMContentLoaded", displayCareers);
+    </script>
+  </body>
 </html>
