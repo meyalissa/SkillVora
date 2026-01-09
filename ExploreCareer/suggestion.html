@@ -1,167 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suggested Careers</title>
-  <link rel="stylesheet" href="../css/suggest.css">
-</head>
-<body>
-<header class="resume-header">
-  <div class="logo">
-    <a href="../index.html">
-      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
-    </a>
-  </div>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suggested Careers</title>
+    <link rel="stylesheet" href="../css/suggest.css" />
+  </head>
+  <body>
+    <header class="resume-header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/logo.png"
+            class="nav_img_logo"
+            alt="SkillVora Logo"
+          />
+        </a>
+      </div>
+    </header>
 
-<div class="container">
-  <h2>Suggested Careers</h2>
-  <div class="careers-grid" id="careersGrid"></div>
-</div>
+    <div class="container">
+      <h2>Suggested Careers</h2>
+      <div class="careers-grid" id="careersGrid"></div>
+    </div>
 
-<script>
-/* Career data*/
-const careerData = [
-  {
-    title: "Software Developer",
-    description: "Develops and maintains software applications.",
-    roles: [
-      "Writes and tests code for software applications",
-      "Fixes bugs and improves system performance",
-      "Collaborates with designers and analysts"
-    ],
-    interests: ["Technology"],
-    backgrounds: ["Computer Science", "Software Engineering", "Information Technology"],
-    skills: ["Problem-solving", "Analytical thinking", "Practical / Hands-on Skills"],
-    svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#00BFA5"/></svg>`
-  },
-  {
-    title: "Backend Developer",
-    description: "Builds and maintains server-side applications.",
-    roles: [
-      "Develops server-side logic and APIs",
-      "Maintains databases and ensures security",
-      "Collaborates with frontend developers"
-    ],
-    interests: ["Technology"],
-    backgrounds: ["Computer Science", "Software Engineering"],
-    skills: ["Problem-solving", "Analytical thinking", "Practical / Hands-on Skills"],
-    svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#4A90E2"/></svg>`
-  },
-  {
-    title: "Frontend Developer",
-    description: "Develops user-facing interfaces.",
-    roles: [
-      "Implements website and web app interfaces",
-      "Works with UI/UX designers for better experience",
-      "Optimizes applications for performance and usability"
-    ],
-    interests: ["Technology", "Design & Creativity"],
-    backgrounds: ["Web Technologies", "Software Engineering"],
-    skills: ["Creativity", "Practical / Hands-on Skills", "Problem-solving"],
-    svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFA726"/></svg>`
-  },
-  {
-    title: "System Analyst",
-    description: "Analyses system requirements and designs solutions.",
-    roles: [
-      "Analyzes business and technical requirements",
-      "Designs efficient system solutions",
-      "Collaborates with stakeholders and developers"
-    ],
-    interests: ["Technology"],
-    backgrounds: ["Information Systems", "Computer Science"],
-    skills: ["Analytical thinking", "Communication", "Problem-solving"],
-    svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#9C27B0"/></svg>`
-  },
-  {
-    title: "IT Support Engineer",
-    description: "Provides technical support and troubleshooting.",
-    roles: [
-      "Supports end-users and solves IT issues",
-      "Maintains hardware and software systems",
-      "Documents problems and solutions"
-    ],
-    interests: ["Technology"],
-    backgrounds: ["Information Technology"],
-    skills: ["Problem-solving", "Communication", "Practical / Hands-on Skills"],
-    svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#607D8B"/></svg>`
-  }
-];
+    <script>
+      /* Career data*/
+      const careerData = [
+        {
+          title: "Software Developer",
+          description: "Develops and maintains software applications.",
+          roles: [
+            "Writes and tests code for software applications",
+            "Fixes bugs and improves system performance",
+            "Collaborates with designers and analysts",
+          ],
+          interests: ["Technology"],
+          backgrounds: [
+            "Computer Science",
+            "Software Engineering",
+            "Information Technology",
+          ],
+          skills: [
+            "Problem-solving",
+            "Analytical thinking",
+            "Practical / Hands-on Skills",
+          ],
+          svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#00BFA5"/></svg>`,
+        },
+        {
+          title: "Backend Developer",
+          description: "Builds and maintains server-side applications.",
+          roles: [
+            "Develops server-side logic and APIs",
+            "Maintains databases and ensures security",
+            "Collaborates with frontend developers",
+          ],
+          interests: ["Technology"],
+          backgrounds: ["Computer Science", "Software Engineering"],
+          skills: [
+            "Problem-solving",
+            "Analytical thinking",
+            "Practical / Hands-on Skills",
+          ],
+          svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#4A90E2"/></svg>`,
+        },
+        {
+          title: "Frontend Developer",
+          description: "Develops user-facing interfaces.",
+          roles: [
+            "Implements website and web app interfaces",
+            "Works with UI/UX designers for better experience",
+            "Optimizes applications for performance and usability",
+          ],
+          interests: ["Technology", "Design & Creativity"],
+          backgrounds: ["Web Technologies", "Software Engineering"],
+          skills: [
+            "Creativity",
+            "Practical / Hands-on Skills",
+            "Problem-solving",
+          ],
+          svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#FFA726"/></svg>`,
+        },
+        {
+          title: "System Analyst",
+          description: "Analyses system requirements and designs solutions.",
+          roles: [
+            "Analyzes business and technical requirements",
+            "Designs efficient system solutions",
+            "Collaborates with stakeholders and developers",
+          ],
+          interests: ["Technology"],
+          backgrounds: ["Information Systems", "Computer Science"],
+          skills: ["Analytical thinking", "Communication", "Problem-solving"],
+          svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#9C27B0"/></svg>`,
+        },
+        {
+          title: "IT Support Engineer",
+          description: "Provides technical support and troubleshooting.",
+          roles: [
+            "Supports end-users and solves IT issues",
+            "Maintains hardware and software systems",
+            "Documents problems and solutions",
+          ],
+          interests: ["Technology"],
+          backgrounds: ["Information Technology"],
+          skills: [
+            "Problem-solving",
+            "Communication",
+            "Practical / Hands-on Skills",
+          ],
+          svg: `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#607D8B"/></svg>`,
+        },
+      ];
 
-/* User selection */
-function getUserSelection() {
-  return {
-    interest: localStorage.getItem("interest"),
-    background: localStorage.getItem("background"),
-    skills: JSON.parse(localStorage.getItem("skills")) || []
-  };
-}
+      /* User selection */
+      function getUserSelection() {
+        return {
+          interest: localStorage.getItem("interest"),
+          background: localStorage.getItem("background"),
+          skills: JSON.parse(localStorage.getItem("skills")) || [],
+        };
+      }
 
-/* Score career - console*/
-function scoreCareers() {
-  const user = getUserSelection();
-  const selectedSkills = user.skills.slice(0, 3); // exactly 3 skills
+      /* Score career - console*/
+      function scoreCareers() {
+        const user = getUserSelection();
+        const selectedSkills = user.skills.slice(0, 3); // exactly 3 skills
 
-  return careerData.map(career => {
-    let score = 0;
+        return careerData.map((career) => {
+          let score = 0;
 
-    if (career.interests.includes(user.interest)) score += 3;
-    if (career.backgrounds.includes(user.background)) score += 2;
+          if (career.interests.includes(user.interest)) score += 3;
+          if (career.backgrounds.includes(user.background)) score += 2;
 
-    selectedSkills.forEach(skill => {
-      if (career.skills.includes(skill)) score += 1;
-    });
+          selectedSkills.forEach((skill) => {
+            if (career.skills.includes(skill)) score += 1;
+          });
 
-    console.log(`Career: ${career.title} | Score: ${score}`);
-    return { ...career, score };
-  });
-}
+          console.log(`Career: ${career.title} | Score: ${score}`);
+          return { ...career, score };
+        });
+      }
 
-/* Display 3 career*/
-function displayCareers() {
-  const grid = document.getElementById("careersGrid");
+      /* Display 3 career*/
+      function displayCareers() {
+        const grid = document.getElementById("careersGrid");
 
-  const careers = scoreCareers()
-    .filter(career => career.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3); // show top 3
+        const careers = scoreCareers()
+          .filter((career) => career.score > 0)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 3); // show top 3
 
-  grid.innerHTML = "";
+        grid.innerHTML = "";
 
-  if (careers.length === 0) {
-    grid.innerHTML = "<p>No careers match your selection.</p>";
-    return;
-  }
+        if (careers.length === 0) {
+          grid.innerHTML = "<p>No careers match your selection.</p>";
+          return;
+        }
 
-  careers.forEach(career => {
-    const card = document.createElement("div");
-    card.className = "career-card";
+        careers.forEach((career) => {
+          const card = document.createElement("div");
+          card.className = "career-card";
 
-    card.innerHTML = `
+          card.innerHTML = `
       <div class="icon-container">${career.svg}</div>
       <h3 class="career-title">${career.title}</h3>
       <p class="career-description">${career.description}</p>
       <div class="skills">
-        ${career.skills.map(skill =>
-          `<span class="skill-tag">${skill}</span>`
-        ).join("")}
+        ${career.skills
+          .map((skill) => `<span class="skill-tag">${skill}</span>`)
+          .join("")}
       </div>
       <button class="view-details-btn">View Details</button>
     `;
 
-    // view detail button
-    card.querySelector(".view-details-btn").addEventListener("click", () => {
-      localStorage.setItem("selectedCareer", JSON.stringify(career));
-      window.location.href = "career-information.html";
-    });
+          // view detail button
+          card
+            .querySelector(".view-details-btn")
+            .addEventListener("click", () => {
+              localStorage.setItem("selectedCareer", JSON.stringify(career));
+              window.location.href = "career-information.html";
+            });
 
-    grid.appendChild(card);
-  });
-}
+          grid.appendChild(card);
+        });
+      }
 
-document.addEventListener("DOMContentLoaded", displayCareers);
-</script>
-</body>
+      document.addEventListener("DOMContentLoaded", displayCareers);
+    </script>
+  </body>
 </html>
