@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Select Your Background</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../css/background.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="resume-header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/logo.png"
+            class="nav_img_logo"
+            alt="SkillVora Logo"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Step -->
+      <div class="step-header">
+        <span class="step-title"
+          >Step 2 of 3 – <strong>Background</strong></span
+        >
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <h2>Select Your Background</h2>
+      <p class="subtitle">
+        Select your background to help identify suitable career paths.
+      </p>
+
+      <div class="background-list">
+        <button class="background">
+          <span class="material-symbols-rounded icon">computer</span>
+          Computer Science
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">smart_toy</span>
+          Artificial Intelligence
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">smartphone</span>
+          Mobile Application Development
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">security</span>
+          Cybersecurity
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">cloud</span>
+          Cloud Computing
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">bug_report</span>
+          Software Testing
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">data_usage</span>
+          Data Science
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">computer</span>
+          Information Technology
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">hub</span>
+          Information Systems
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">engineering</span>
+          Software Engineering
+        </button>
+
+        <button class="background">
+          <span class="material-symbols-rounded icon">language</span>
+          Web Technologies
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="background-footer">
+        <button class="back-btn" onclick="window.location.href='interest.html'">
+          Back
+        </button>
+
+        <button class="next-btn" id="nextBtn" disabled>Next</button>
+      </div>
+    </div>
+
+    <!-- Selection logic -->
+    <script>
+      const bgButtons = document.querySelectorAll(".background");
+      const nextBtn = document.getElementById("nextBtn");
+      const progressFill = document.getElementById("progressFill");
+
+      // Initial state: Step 1 completed
+      progressFill.style.width = "30%";
+      nextBtn.disabled = true;
+
+      bgButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const isActive = button.classList.contains("active");
+
+          // Remove all selections
+          bgButtons.forEach((btn) => btn.classList.remove("active"));
+
+          if (!isActive) {
+            // Select → Step 2 active
+            button.classList.add("active");
+            progressFill.style.width = "60%";
+            nextBtn.disabled = false;
+          } else {
+            // Unselect → back to Step 1 only
+            progressFill.style.width = "30%";
+            nextBtn.disabled = true;
+          }
+        });
+      });
+      // GO TO SKILLS PAGE
+      nextBtn.addEventListener("click", () => {
+        if (!nextBtn.disabled) {
+          window.location.href = "skills.html";
+        }
+      });
+    </script>
+  </body>
+</html>
