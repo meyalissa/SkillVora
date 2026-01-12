@@ -16,12 +16,10 @@
       rel="stylesheet"
     />
 
-    <!-- Page CSS -->
     <link rel="stylesheet" href="../css/interest.css" />
   </head>
 
   <body>
-    <!-- Header -->
     <header class="resume-header">
       <div class="logo">
         <a href="../index.html">
@@ -35,7 +33,6 @@
     </header>
 
     <div class="container">
-      <!-- Step -->
       <div class="step-header">
         <span class="step-title">Step 1 of 3 – <strong>Interests</strong></span>
         <div class="progress-bar">
@@ -47,74 +44,77 @@
       <p class="subtitle">Choose which careers interests.</p>
 
       <div class="interest-list">
-        <button class="interest">
-          <span class="material-symbols-rounded icon">computer</span>
+        <button class="interest" data-interest="technology">
+          <span class="material-symbols-rounded">computer</span>
           Technology
         </button>
 
-        <button class="interest">
-          <span class="material-symbols-rounded icon">draw</span>
+        <button class="interest" data-interest="design">
+          <span class="material-symbols-rounded">draw</span>
           Design & Creativity
         </button>
 
-        <button class="interest">
-          <span class="material-symbols-rounded icon">business_center</span>
+        <button class="interest" data-interest="business">
+          <span class="material-symbols-rounded">business_center</span>
           Business & Management
         </button>
 
-        <button class="interest">
-          <span class="material-symbols-rounded icon">analytics</span>
+        <button class="interest" data-interest="data">
+          <span class="material-symbols-rounded">analytics</span>
           Data & Analytics
         </button>
 
-        <button class="interest">
-          <span class="material-symbols-rounded icon">chat</span>
+        <button class="interest" data-interest="communication">
+          <span class="material-symbols-rounded">chat</span>
           Communication
         </button>
 
-        <button class="interest">
-          <span class="material-symbols-rounded icon">school</span>
+        <button class="interest" data-interest="education">
+          <span class="material-symbols-rounded">school</span>
           Education
         </button>
       </div>
 
       <div class="interest-footer">
-        <button class="next-btn" id="nextBtn">Next</button>
+        <button class="next-btn" id="nextBtn" disabled>Next</button>
       </div>
     </div>
 
-    <!-- ✅ UPDATED TOGGLE LOGIC -->
     <script>
-      const interestButtons = document.querySelectorAll(".interest");
+      const interestMap = {
+        technology: "Technology",
+        design: "Design & Creativity",
+        business: "Business & Management",
+        data: "Data & Analytics",
+        communication: "Communication",
+        education: "Education",
+      };
+
+      const buttons = document.querySelectorAll(".interest");
       const progressFill = document.getElementById("progressFill");
       const nextBtn = document.getElementById("nextBtn");
 
       progressFill.style.width = "0%";
-      nextBtn.disabled = true;
 
-      interestButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const isActive = button.classList.contains("active");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const active = btn.classList.contains("active");
+          buttons.forEach((b) => b.classList.remove("active"));
 
-          interestButtons.forEach((btn) => btn.classList.remove("active"));
-
-          if (!isActive) {
-            button.classList.add("active");
+          if (!active) {
+            btn.classList.add("active");
+            localStorage.setItem("interest", interestMap[btn.dataset.interest]);
             progressFill.style.width = "30%";
             nextBtn.disabled = false;
           } else {
+            localStorage.removeItem("interest");
             progressFill.style.width = "0%";
             nextBtn.disabled = true;
           }
         });
       });
 
-      // GO TO BACKGROUND PAGE
-      nextBtn.addEventListener("click", () => {
-        if (!nextBtn.disabled) {
-          window.location.href = "background.html";
-        }
-      });
+      nextBtn.onclick = () => (window.location.href = "background.html");
     </script>
   </body>
 </html>
