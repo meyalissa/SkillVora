@@ -11,6 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Material Symbols -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
       rel="stylesheet"
@@ -48,32 +50,32 @@
       <p class="helper-text">You may select up to 3 options</p>
 
       <div class="skills-list">
-        <button class="skill">
+        <button class="skill" data-skill="Problem-solving">
           <span class="material-symbols-rounded icon">psychology</span>
           Problem-solving
         </button>
 
-        <button class="skill">
+        <button class="skill" data-skill="Communication">
           <span class="material-symbols-rounded icon">chat</span>
           Communication
         </button>
 
-        <button class="skill">
+        <button class="skill" data-skill="Creativity">
           <span class="material-symbols-rounded icon">palette</span>
           Creativity
         </button>
 
-        <button class="skill">
+        <button class="skill" data-skill="Analytical thinking">
           <span class="material-symbols-rounded icon">analytics</span>
           Analytical thinking
         </button>
 
-        <button class="skill">
+        <button class="skill" data-skill="Practical or hands-on skills">
           <span class="material-symbols-rounded icon">build</span>
-          Practical or hands-on skills
+          Practical / Hands-on Skills
         </button>
 
-        <button class="skill">
+        <button class="skill" data-skill="Organisational skills">
           <span class="material-symbols-rounded icon">inventory_2</span>
           Organisational skills
         </button>
@@ -87,19 +89,22 @@
         >
           Back
         </button>
-        <a href="suggested-careers.html"></a>
+
         <button class="next-btn" id="nextBtn" disabled>
           Show Suggested Careers
-    
-        </button></a>
+        </button>
       </div>
     </div>
 
-    <!-- Skills selection logic -->
+    <!-- ===============================
+     SKILLS LOGIC (FIXED)
+================================= -->
     <script>
       const skillButtons = document.querySelectorAll(".skill");
       const progressFill = document.getElementById("progressFill");
       const nextBtn = document.getElementById("nextBtn");
+
+      let selectedSkills = [];
 
       // Initial state
       progressFill.style.width = "60%";
@@ -107,19 +112,23 @@
 
       skillButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          const activeSkills = document.querySelectorAll(".skill.active");
+          const skillValue = button.dataset.skill;
 
           if (button.classList.contains("active")) {
+            // Unselect
             button.classList.remove("active");
+            selectedSkills = selectedSkills.filter(
+              (skill) => skill !== skillValue
+            );
           } else {
-            if (activeSkills.length >= 3) return;
+            // Select (max 3)
+            if (selectedSkills.length >= 3) return;
             button.classList.add("active");
+            selectedSkills.push(skillValue);
           }
 
-          const selectedCount =
-            document.querySelectorAll(".skill.active").length;
-
-          if (selectedCount > 0) {
+          // Progress logic
+          if (selectedSkills.length > 0) {
             progressFill.style.width = "100%";
             nextBtn.disabled = false;
           } else {
@@ -129,11 +138,12 @@
         });
       });
 
-      // Go to suggested careers page
+      // Save & go to suggestion page
       nextBtn.addEventListener("click", () => {
-        if (!nextBtn.disabled) {
-          window.location.href = "suggestion.html";
-        }
+        if (selectedSkills.length === 0) return;
+
+        localStorage.setItem("skills", JSON.stringify(selectedSkills));
+        window.location.href = "suggestion.html";
       });
     </script>
   </body>
