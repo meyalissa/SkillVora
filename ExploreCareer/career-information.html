@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Information</title>
-    <link rel="stylesheet" href="../css/career-info.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Information</title>
+  <link rel="stylesheet" href="../css/career-info.css" />
+  <link rel="stylesheet" href="../css/career-icon.css" />
 </head>
 <body>
 <header class="resume-header">
@@ -16,50 +17,58 @@
 </header>
 
 <div class="container">
-    <div class="header">
-        <div class="breadcrumb">
-            Suggested Careers > <span id="careerBreadcrumb"></span>
-        </div>
-        <button class="back-btn" onclick="window.location.href='suggestion.html'">Back to suggestions</button>
+  <div class="header">
+    <div class="breadcrumb">
+      Suggested Careers > <span id="careerBreadcrumb"></span>
+    </div>
+    <button class="back-btn" onclick="window.location.href='suggestion.html'">Back to suggestions</button>
+  </div>
+
+  <div class="hero">
+    <div class="hero-image">
+      <!-- Career image container -->
+      <div class="career-icon">
+        <img id="careerImage" src="" alt="">
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1 id="careerTitle"></h1>
+      <p id="careerDescription"></p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <h2>About the role</h2>
+      <div id="careerRoles"></div>
     </div>
 
-    <div class="hero">
-        <div class="hero-image">
-            <div class="illustration" id="careerSVG"></div>
-        </div>
-        <div class="hero-content">
-            <h1 id="careerTitle"></h1>
-            <p id="careerDescription"></p>
-        </div>
+    <div class="section">
+      <h2>Key Skills & Qualifications</h2>
+      <div class="skills" id="careerSkills"></div>
     </div>
-
-    <div class="content">
-        <div class="section">
-            <h2>About the role</h2>
-            <div id="careerRoles"></div>
-        </div>
-
-        <div class="section">
-            <h2>Key Skills & Qualifications</h2>
-            <div class="skills" id="careerSkills"></div>
-        </div>
-    </div>
+  </div>
 </div>
 
 <script>
-  const career = JSON.parse(localStorage.getItem("selectedCareer"));
-
-  if (!career) {
+  // Get selected career from localStorage
+  const careerStr = localStorage.getItem("selectedCareer");
+  if (!careerStr) {
+    alert("No career selected. Redirecting to suggestions page.");
     window.location.href = "suggestion.html";
   }
+
+  const career = JSON.parse(careerStr);
 
   // Set breadcrumb, title, description
   document.getElementById("careerBreadcrumb").textContent = career.title;
   document.getElementById("careerTitle").textContent = career.title;
   document.getElementById("careerDescription").textContent = career.description;
 
-  // Set SVG / illustration
-  document.getElementById("careerSVG").innerHTML = career.svg;
+  // Set image
+  const img = document.getElementById("careerImage");
+  img.src = career.image;
+  img.alt = career.title;
 
   // Populate roles
   const rolesContainer = document.getElementById("careerRoles");

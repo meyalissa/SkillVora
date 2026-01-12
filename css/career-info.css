@@ -1,193 +1,201 @@
+/* Import other base styles */
 @import "var.css";
 @import "style.css";
 @import "start.css";
 
-.resume-header {
-  margin-bottom: 0 !important;
-  padding-bottom: 5px !important;
-}
+/* General reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Body styling */
 body {
-    background-color: #f5f5f5;
-    padding: 15px;
+  background-color: #f5f5f5;
+  padding: 15px;
 }
 
+/* Container */
 .container {
-    max-width: 800px;
-    margin: 15px auto 0 auto;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  max-width: 800px;
+  margin: 15px auto 0 auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
+/* Header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-    border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .breadcrumb {
-    color: #666;
-    font-size: 13px;
+  color: #666;
+  font-size: 13px;
 }
 
 .breadcrumb span {
-    color: #00a896;
+  color: #00a896;
 }
 
 .back-btn {
-    background-color: #00a896;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
+  background-color: #00a896;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .back-btn:hover {
-    background-color: #008c7a;
+  background-color: #008c7a;
 }
 
+/* Hero section */
 .hero {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 25px 25px;
-    border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 25px 25px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .hero-image {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
-.illustration {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+/* Career icon styling (circular image like suggestion page) */
+.career-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 10px;
+  overflow: hidden;   /* ensures image stays within circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #f5f5f5;
 }
 
-.illustration::before {
-    content: '</>';
-    font-size: 40px;
-    color: white;
-    font-weight: bold;
+.career-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* maintains aspect ratio and fills the circle */
 }
 
+/* Hero content */
 .hero-content h1 {
-    font-size: 24px;
-    color: #1a1a1a;
-    margin-bottom: 8px;
+  font-size: 24px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
 }
 
 .hero-content p {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.5;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
 }
 
+/* Content section */
 .content {
-    padding: 25px 25px;
+  padding: 25px 25px;
 }
 
 .section {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .section:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .section h2 {
-    font-size: 17px;
-    color: #1a1a1a;
-    margin-bottom: 15px;
+  font-size: 17px;
+  color: #1a1a1a;
+  margin-bottom: 15px;
 }
 
+/* Roles list */
 .role-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .role-item:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .checkmark {
-    width: 22px;
-    height: 22px;
-    background-color: #00a896;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2px;
+  width: 22px;
+  height: 22px;
+  background-color: #00a896;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
 }
 
 .checkmark::after {
-    content: '✓';
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
+  content: '✓';
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .role-item p {
-    color: #333;
-    font-size: 14px;
-    line-height: 1.5;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
+/* Skills tags */
 .skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .skill-tag {
-    background-color: #d4f4f1;
-    color: #00a896;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    border: 1px solid #b8ebe6;
+  background-color: #d4f4f1;
+  color: #00a896;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #b8ebe6;
 }
 
+/* Responsive adjustments */
 @media (max-width: 600px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .header {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
-    }
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
 
-    .illustration {
-        width: 90px;
-        height: 90px;
-    }
+  .career-icon {
+    width: 90px;
+    height: 90px;
+  }
 
-    .hero-content h1 {
-        font-size: 22px;
-    }
+  .hero-content h1 {
+    font-size: 22px;
+  }
 }
