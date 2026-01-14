@@ -1,0 +1,129 @@
+/* Required imports */
+@import "var.css";
+@import "style.css";
+@import "start.css";
+
+/* Keep logo size consistent */
+header .nav_img_logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Layout */
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Title */
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+/* Cards */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.user-card {
+  width: 190px;
+  height: 250px;
+  border-radius: 22px;
+  border: 1.8px solid rgba(0, 173, 142, 0.35);
+  background: #ffffff;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  transition: 0.2s ease;
+}
+
+/* ✅ Floating icon container like your picture */
+.icon-box {
+  width: 90px;
+  height: 90px;
+  border-radius: 14px;
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* soft floating effect */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+/* ✅ Big icon without border */
+.card-icon {
+  font-size: 80px;
+  color: var(--primary-color);
+}
+
+/* Label */
+.card-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color);
+
+  position: absolute;
+  bottom: 22px;
+}
+
+/* Active */
+.user-card.active {
+  background: rgba(0, 173, 142, 0.1);
+  border: 2px solid var(--primary-color);
+}
+
+/* Next button */
+.next-wrapper {
+  margin-top: 90px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.next-btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 14px 42px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.next-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.next-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .card-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .next-wrapper {
+    justify-content: center;
+  }
+}

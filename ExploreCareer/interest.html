@@ -11,6 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Material Symbols -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
       rel="stylesheet"
@@ -34,7 +36,7 @@
 
     <div class="container">
       <div class="step-header">
-        <span class="step-title">Step 1 of 3 – <strong>Interests</strong></span>
+        <span class="step-title" id="stepTitle"></span>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -81,6 +83,21 @@
     </div>
 
     <script>
+      const userType = localStorage.getItem("userType"); // "SPM Leavers" / "Job Seeker"
+
+      const stepTitle = document.getElementById("stepTitle");
+      const progressFill = document.getElementById("progressFill");
+      const nextBtn = document.getElementById("nextBtn");
+      const buttons = document.querySelectorAll(".interest");
+
+      // ✅ Step title dynamic
+      if (userType === "SPM Leavers") {
+        stepTitle.innerHTML = `Step 1 of 2 – <strong>Interests</strong>`;
+      } else {
+        stepTitle.innerHTML = `Step 1 of 3 – <strong>Interests</strong>`;
+      }
+
+      // ✅ Store correct interest label
       const interestMap = {
         technology: "Technology",
         design: "Design & Creativity",
@@ -90,11 +107,8 @@
         education: "Education",
       };
 
-      const buttons = document.querySelectorAll(".interest");
-      const progressFill = document.getElementById("progressFill");
-      const nextBtn = document.getElementById("nextBtn");
-
       progressFill.style.width = "0%";
+      nextBtn.disabled = true;
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -103,8 +117,17 @@
 
           if (!active) {
             btn.classList.add("active");
+
+            // ✅ save interest
             localStorage.setItem("interest", interestMap[btn.dataset.interest]);
-            progressFill.style.width = "30%";
+
+            // ✅ progress changes by flow
+            if (userType === "SPM Leavers") {
+              progressFill.style.width = "50%";
+            } else {
+              progressFill.style.width = "30%";
+            }
+
             nextBtn.disabled = false;
           } else {
             localStorage.removeItem("interest");
@@ -114,7 +137,16 @@
         });
       });
 
-      nextBtn.onclick = () => (window.location.href = "background.html");
+      // ✅ Next depends on user type
+      nextBtn.addEventListener("click", () => {
+        if (nextBtn.disabled) return;
+
+        if (userType === "SPM Leavers") {
+          window.location.href = "skills.html"; // skip background
+        } else {
+          window.location.href = "background.html"; // normal
+        }
+      });
     </script>
   </body>
 </html>
