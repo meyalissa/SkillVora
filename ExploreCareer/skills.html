@@ -20,6 +20,37 @@
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="../css/skills.css" />
+
+    <!-- ✅ Breadcrumb custom style -->
+    <style>
+      /* breadcrumb preview line */
+      .selection-preview {
+        margin: 18px 0 22px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      /* Interest = grey */
+      .selection-preview .interest-label,
+      .selection-preview .interest-value {
+        color: #656b81; /* matches your theme grey */
+        font-weight: 600;
+      }
+
+      /* Background = green */
+      .selection-preview .bg-label,
+      .selection-preview .bg-value {
+        color: var(--primary-color); /* theme green */
+        font-weight: 700;
+      }
+
+      /* arrow style */
+      .selection-preview .arrow {
+        color: #656b81;
+        font-weight: 600;
+        margin: 0 6px;
+      }
+    </style>
   </head>
 
   <body>
@@ -39,7 +70,7 @@
     <div class="container">
       <!-- Step -->
       <div class="step-header">
-        <span class="step-title">Step 3 of 3 – <strong>Skills</strong></span>
+        <span class="step-title" id="stepTitle"></span>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -48,6 +79,9 @@
       <h2>Select Your Skills</h2>
       <p class="subtitle">Choose skills you have or enjoy using.</p>
       <p class="helper-text">You may select up to 3 options</p>
+
+      <!-- ✅ Breadcrumb Preview -->
+      <p class="selection-preview" id="previewBox"></p>
 
       <div class="skills-list">
         <button class="skill" data-skill="Problem-solving">
@@ -83,12 +117,7 @@
 
       <!-- Footer -->
       <div class="skills-footer">
-        <button
-          class="back-btn"
-          onclick="window.location.href='background.html'"
-        >
-          Back
-        </button>
+        <button class="back-btn" id="backBtn">Back</button>
 
         <button class="next-btn" id="nextBtn" disabled>
           Show Suggested Careers
@@ -96,49 +125,87 @@
       </div>
     </div>
 
-    <!-- ===============================
-     SKILLS LOGIC (FIXED)
-================================= -->
     <script>
-      const skillButtons = document.querySelectorAll(".skill");
+      const userType = localStorage.getItem("userType"); // "SPM Leavers" / "Job Seeker"
+
+      const stepTitle = document.getElementById("stepTitle");
       const progressFill = document.getElementById("progressFill");
       const nextBtn = document.getElementById("nextBtn");
+      const backBtn = document.getElementById("backBtn");
+      const previewBox = document.getElementById("previewBox");
+      const skillButtons = document.querySelectorAll(".skill");
 
       let selectedSkills = [];
 
-      // Initial state
-      progressFill.style.width = "60%";
+      const interest = localStorage.getItem("interest");
+      const background = localStorage.getItem("background");
+
+      /* ✅ Breadcrumb structure with colours */
+      if (userType === "SPM Leavers") {
+        // Student flow → no background
+        previewBox.innerHTML = `
+          <span class="interest-label">Interest:</span>
+          <span class="interest-value">${interest || "-"}</span>
+        `;
+      } else {
+        // Job seeker flow → show interest + background
+        previewBox.innerHTML = `
+          <span class="interest-label">Interest:</span>
+          <span class="interest-value">${interest || "-"}</span>
+
+          <span class="arrow">&gt;</span>
+
+          <span class="bg-label">Background:</span>
+          <span class="bg-value">${background || "-"}</span>
+        `;
+      }
+
+      /* ✅ Step title dynamic */
+      if (userType === "SPM Leavers") {
+        stepTitle.innerHTML = `Step 2 of 2 – <strong>Skills</strong>`;
+        progressFill.style.width = "50%";
+      } else {
+        stepTitle.innerHTML = `Step 3 of 3 – <strong>Skills</strong>`;
+        progressFill.style.width = "60%";
+      }
+
       nextBtn.disabled = true;
 
+      /* ✅ Skill selection logic */
       skillButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const skillValue = button.dataset.skill;
 
           if (button.classList.contains("active")) {
-            // Unselect
             button.classList.remove("active");
-            selectedSkills = selectedSkills.filter(
-              (skill) => skill !== skillValue
-            );
+            selectedSkills = selectedSkills.filter((s) => s !== skillValue);
           } else {
-            // Select (max 3)
             if (selectedSkills.length >= 3) return;
             button.classList.add("active");
             selectedSkills.push(skillValue);
           }
 
-          // Progress logic
           if (selectedSkills.length > 0) {
             progressFill.style.width = "100%";
             nextBtn.disabled = false;
           } else {
-            progressFill.style.width = "60%";
+            progressFill.style.width =
+              userType === "SPM Leavers" ? "50%" : "60%";
             nextBtn.disabled = true;
           }
         });
       });
 
-      // Save & go to suggestion page
+      /* ✅ Back button depends on flow */
+      backBtn.addEventListener("click", () => {
+        if (userType === "SPM Leavers") {
+          window.location.href = "interest.html";
+        } else {
+          window.location.href = "background.html";
+        }
+      });
+
+      /* ✅ Save skills and go suggestion */
       nextBtn.addEventListener("click", () => {
         if (selectedSkills.length === 0) return;
 

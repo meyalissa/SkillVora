@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Type</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="../css/user-type.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="resume-header">
+      <div class="logo">
+        <a href="../index.html">
+          <img
+            src="../assets/logo.png"
+            class="nav_img_logo"
+            alt="SkillVora Logo"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <h2 class="page-title">Are you..</h2>
+
+      <div class="card-wrapper">
+        <!-- SPM Leavers -->
+        <button class="user-card" data-type="SPM Leavers">
+          <div class="icon-box">
+            <span class="material-symbols-rounded card-icon">school</span>
+          </div>
+          <p class="card-text">SPM Leavers</p>
+        </button>
+
+        <!-- Job Seeker -->
+        <button class="user-card" data-type="Job Seeker">
+          <div class="icon-box">
+            <span class="material-symbols-rounded card-icon"
+              >person_search</span
+            >
+          </div>
+          <p class="card-text">Job Seeker</p>
+        </button>
+      </div>
+
+      <div class="next-wrapper">
+        <button class="next-btn" id="nextBtn" disabled>Next</button>
+      </div>
+    </div>
+
+    <!-- Logic -->
+    <script>
+      const cards = document.querySelectorAll(".user-card");
+      const nextBtn = document.getElementById("nextBtn");
+
+      let selectedType = null;
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const isActive = card.classList.contains("active");
+
+          cards.forEach((c) => c.classList.remove("active"));
+
+          if (!isActive) {
+            card.classList.add("active");
+            selectedType = card.dataset.type;
+
+            localStorage.setItem("userType", selectedType);
+            nextBtn.disabled = false;
+          } else {
+            selectedType = null;
+            localStorage.removeItem("userType");
+            nextBtn.disabled = true;
+          }
+        });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (!nextBtn.disabled) {
+          window.location.href = "interest.html";
+        }
+      });
+    </script>
+  </body>
+</html>
