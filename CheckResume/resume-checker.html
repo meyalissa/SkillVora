@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="../css/start.css">
   <link rel="icon" href="../assets/icon.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 </head>
 <body>
 
@@ -34,55 +35,9 @@
 <!-- Upload component will be injected here -->
 <section id="upload"></section>
 
-<script>
-fetch("upload-resume.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("upload").innerHTML = html;
+<!-- <script src="checker.js" defer></script> -->
 
-    const uploadBox = document.getElementById("uploadBox");
-    const resumeInput = document.getElementById("resumeInput");
-    const fileName = document.getElementById("fileName");
-    const checkBtn = document.getElementById("checkBtn");
-    const errorText = document.getElementById("errorText");
-
-    let selectedFile = null;
-
-    uploadBox.addEventListener("click", () => {
-      resumeInput.click();
-    });
-
-    resumeInput.addEventListener("change", () => {
-      if (resumeInput.files.length > 0) {
-        selectedFile = resumeInput.files[0];
-        fileName.textContent = selectedFile.name;
-        errorText.classList.remove("show");
-      }
-    });
-
-    checkBtn.addEventListener("click", () => {
-      if (!selectedFile) {
-        errorText.classList.add("show");
-        return;
-      }
-      // Fake analysis values
-      const score = Math.floor(Math.random() * 21) + 70; // 70–90
-      const ats = score > 80 ? "GOOD" : "FAIR";
-      const completeness = score > 75 ? "COMPLETE" : "INCOMPLETE";
-      checkBtn.textContent = "Analyzing...";
-      checkBtn.disabled = true;
-      setTimeout(() => {
-        localStorage.setItem("resumeFileName", selectedFile.name);
-        localStorage.setItem("resumeScore", score);
-        localStorage.setItem("resumeATS", ats);
-        localStorage.setItem("resumeCompleteness", completeness);
-        window.location.href = "resume-result.html";
-      }, 2000);
-    });
-
-  })
-  .catch(err => console.error(err));
-</script>
+<script src="resume-analyzer.js" defer></script>
 
 </body>
 </html>

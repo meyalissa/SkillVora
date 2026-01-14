@@ -1,43 +1,68 @@
 <link rel="stylesheet" href="../css/upload_resume.css">
 
-<section class="upload-page">
+<!-- REQUIRED WRAPPER -->
+<div id="upload">
 
-  <!-- LEFT SIDE -->
-  <div class="upload-left">
-    <h2>Upload Your Resume</h2>
+  <!-- REQUIRED UPLOAD SECTION -->
+  <section class="upload-page" id="uploadSection">
 
-    <div class="upload-box" id="uploadBox">
-      <input 
-        type="file" 
-        id="resumeInput" 
-        accept=".pdf,.doc,.docx"
-        hidden
-      >
+    <!-- LEFT SIDE -->
+    <div class="upload-left">
+      <h2>Upload Your Resume</h2>
 
-      <img src="../assets/upload-icon.png" alt="Upload icon">
-      <p>Drag and drop your resume or<br>browse file</p>
-      <span>Ex : PDF, DOC, DOCX</span>
+      <div class="upload-box" id="uploadBox">
+        <input 
+          type="file" 
+          id="fileInput" 
+          accept=".pdf,.doc,.docx"
+          hidden
+        >
 
-      <div id="fileName" class="file-name"></div>
+        <img src="../assets/upload-icon.png" alt="Upload icon">
+        <p>Drag and drop your resume or<br>browse file</p>
+        <span>Ex : PDF, DOC, DOCX</span>
+
+        <!-- REQUIRED -->
+        <div id="fileInfo" class="file-name"></div>
+      </div>
+
+      <div class="error-text" id="errorText">
+        Please upload your resume before proceeding.
+      </div>
+
+      <!-- OPTIONAL JOB DESCRIPTION -->
+      <textarea
+        id="jobDescription"
+        placeholder="Paste job description here (optional)"
+        rows="4"
+        style="margin-top:15px; width:100%;"
+      ></textarea>
+
+      <div class="button-wrapper">
+        <button 
+          type="button"
+          class="btn primary check-btn"
+          id="analyzeBtn"
+          disabled
+        >
+          Check Resume
+        </button>
+      </div>
     </div>
 
-    <div class="error-text" id="errorText">
-      Please upload your resume before proceeding.
+    <!-- RIGHT SIDE -->
+    <div class="upload-right">
+      <img src="../assets/uploadresume.png" alt="Resume illustration">
     </div>
 
-    <div class="button-wrapper">
-      <button 
-        type="button"
-        class="btn primary check-btn"
-        id="checkBtn">
-        Check Resume
-      </button>
-    </div>
+  </section>
+
+  <!-- REQUIRED LOADING SECTION -->
+  <div id="loading" style="display:none;">
+    <p>Analyzing resume, please wait...</p>
   </div>
 
-  <!-- RIGHT SIDE -->
-  <div class="upload-right">
-    <img src="../assets/uploadresume.png" alt="Resume illustration">
-  </div>
+  <!-- REQUIRED RESULTS SECTION -->
+  <div id="results" style="display:none;"></div>
 
-</section>
+</div>
