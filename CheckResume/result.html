@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillVora | Resume Checker</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../css/result.css">
+  <link rel="stylesheet" href="../css/start.css">
+ 
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/icon.png">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="resume-header">
+  <div class="logo">
+    <a href="../index.html">
+      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
+    </a>
+  </div>
+
+  <a href="../ExploreCareer/career.html" class="btn outline small">
+    Explore Career Paths
+  </a>
+</header>
+
+<!-- ================= RESUME SUMMARY ================= -->
+<section id="resultsPage">
+  <div class="score-card">
+    <h2>Your Overall ATS Score</h2>
+    <div id="overallScore" class="score-value"></div>
+    <p id="ranking"></p>
+  </div>
+
+  <div id="analysisGrid"></div>
+  
+  <div id="recommendationsSection"></div>
+
+  <button class="btn primary" id="restartBtn">Analyze Another Resume</button>
+  <button class="btn outline" id="downloadPdf">Download Analysis</button>
+</section>
+
+<script>
+  const analysis = JSON.parse(sessionStorage.getItem("analysis"));
+
+  if (!analysis) {
+    alert("No resume data found. Please analyze a resume first.");
+    window.location.href = "../index.html";
+  } else {
+    // Animate score counting
+    const targetScore = analysis.overallScore;
+    const scoreElement = document.getElementById("overallScore");
+    let currentScore = 0;
+    const duration = 1500;
+    const increment = targetScore / (duration / 16);
+
+    function animateScore() {
+      currentScore += increment;
+      if (currentScore < targetScore) {
+        scoreElement.textContent = Math.floor(currentScore) + "/100";
+        requestAnimationFrame(animateScore);
+      } else {
+        scoreElement.textContent = targetScore + "/100";
+      }
+    }
+    animateScore();
+
+    // Ranking display
+    const rankingText = analysis.ranking.replace(/_/g, " ");
+    document.getElementById("ranking").innerHTML = `
+      <span style="opacity: 0.9;">Estimated Ranking:</span> ${rankingText}
+    `;
+
+    // Helper function for status classes
+    function getStatusClass(score) {
+      if (score >= 75) return 'status-good';
+      if (score >= 50) return 'status-warning';
+      return 'status-poor';
+    }
+
+    // Build the main analysis grid
+    let gridHTML = `
+      <div class="analysis-card">
+        <h3>📋 ATS Compatibility</h3>
+        <div class="metric">
+          <span class="metric-label">Parsing Quality:</span>
+          <span class="metric-value ${getStatusClass(analysis.atsScore.score)}">${analysis.atsScore.quality}</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${analysis.atsScore.score}%">
+            ${analysis.atsScore.score}%
+          </div>
+        </div>
+        ${analysis.atsScore.issues.length > 0 ? `
+          <p style="margin-top: 15px;"><strong>Format Issues:</strong></p>
+          <ul>
+            ${analysis.atsScore.issues.map(issue => `<li>${issue}</li>`).join('')}
+          </ul>
+        ` : '<p style="margin-top: 15px; color: #10b981; font-weight: 600;">✓ No format issues detected</p>'}
+      </div>
+
+      <div class="analysis-card">
+        <h3>🔑 Keyword Analysis</h3>
+        <div class="metric">
+          <span class="metric-label">Keyword Match:</span>
+          <span class="metric-value">${analysis.keywords.matchScore}%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Industry Relevance:</span>
+          <span class="metric-value ${getStatusClass(analysis.keywords.matchScore)}">${analysis.keywords.relevance}</span>
+        </div>
+        ${analysis.keywords.foundSkills.length > 0 ? `
+          <p style="margin-top: 15px;"><strong>Found Skills:</strong></p>
+          <div class="keyword-list">
+            ${analysis.keywords.foundSkills.map(kw => `<span class="keyword found">${kw}</span>`).join('')}
+          </div>
+        ` : ''}
+        ${analysis.keywords.missingSkills.length > 0 ? `
+          <p style="margin-top: 15px;"><strong>Missing Keywords:</strong></p>
+          <div class="keyword-list">
+            ${analysis.keywords.missingSkills.map(kw => `<span class="keyword missing">${kw}</span>`).join('')}
+          </div>
+        ` : ''}
+      </div>
+
+      <div class="analysis-card">
+        <h3>📊 Content Quality</h3>
+        <div class="metric">
+          <span class="metric-label">Experience:</span>
+          <span class="metric-value">${analysis.content.experienceScore}%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Skills:</span>
+          <span class="metric-value">${analysis.content.skillsScore}%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Education:</span>
+          <span class="metric-value">${analysis.content.educationScore}%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Achievements:</span>
+          <span class="metric-value">${analysis.content.achievementsScore}%</span>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.95em; color: #666;">
+          ✓ ${analysis.content.quantifiableResults} quantifiable results<br>
+          ✓ ${analysis.content.actionVerbsUsed} strong action verbs
+        </p>
+      </div>
+
+      <div class="analysis-card">
+        <h3>✅ Section Completeness</h3>
+        ${Object.entries(analysis.sections).map(([section, present]) => `
+          <div class="metric">
+            <span class="metric-label">${section.charAt(0).toUpperCase() + section.slice(1)}:</span>
+            <span class="metric-value ${present ? 'status-good' : 'status-poor'}">${present ? '✓ Present' : '✗ Missing'}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    // Add Job Match Analysis if available
+    if (analysis.jobMatch) {
+      gridHTML += `
+        <div class="analysis-card full-width-card">
+          <h3>🎯 Job Match Analysis</h3>
+          <div class="progress-bar" style="height: 30px; margin: 20px 0;">
+            <div class="progress-fill" style="width: ${analysis.jobMatch.overallMatch}%">
+              ${analysis.jobMatch.overallMatch}% Match
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
+            <div class="metric">
+              <span class="metric-label">Experience Match:</span>
+              <span class="metric-value">${analysis.jobMatch.experienceMatch}</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Skills Match:</span>
+              <span class="metric-value">${analysis.jobMatch.skillsMatch}</span>
+            </div>
+          </div>
+          ${analysis.jobMatch.strengths.length > 0 ? `
+            <div style="margin-top: 20px;">
+              <strong style="font-size: 1.1em;">💪 Your Strengths for This Role:</strong>
+              <ul>
+                ${analysis.jobMatch.strengths.map(s => `<li>${s}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+          ${analysis.jobMatch.qualificationGaps.length > 0 ? `
+            <div style="margin-top: 20px;">
+              <strong style="font-size: 1.1em;">⚠️ Qualification Gaps:</strong>
+              <ul>
+                ${analysis.jobMatch.qualificationGaps.map(g => `<li>${g}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    document.getElementById("analysisGrid").innerHTML = gridHTML;
+
+    // Build recommendations section
+    let recHTML = '';
+
+    if (analysis.recommendations.critical.length > 0) {
+      recHTML += `
+        <div class="suggestions critical">
+          <h3>🚨 Critical Improvements</h3>
+          <ul>
+            ${analysis.recommendations.critical.map(rec => `<li>${rec}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    if (analysis.recommendations.important.length > 0) {
+      recHTML += `
+        <div class="suggestions">
+          <h3>⚡ Important Improvements</h3>
+          <ul>
+            ${analysis.recommendations.important.map(rec => `<li>${rec}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    if (analysis.recommendations.niceToHave.length > 0) {
+      recHTML += `
+        <div class="suggestions nice">
+          <h3>💡 Nice to Have</h3>
+          <ul>
+            ${analysis.recommendations.niceToHave.map(rec => `<li>${rec}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    document.getElementById("recommendationsSection").innerHTML = recHTML;
+
+    // Restart button handler
+    document.getElementById("restartBtn").addEventListener("click", () => {
+      sessionStorage.removeItem("analysis");
+      window.location.href = "../index.html";
+    });
+  }
+</script>
+
+</body>
+</html>
