@@ -248,6 +248,28 @@
       window.location.href = "../index.html";
     });
   }
+
+document.getElementById("downloadPdf").addEventListener("click", () => {
+  const analysisData = sessionStorage.getItem("analysis");
+
+  if (!analysisData) {
+    alert("No analysis data found.");
+    return;
+  }
+
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "generate_report.php"; // MUST MATCH FILE NAME
+
+  const input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "analysis_json";
+  input.value = analysisData;
+
+  form.appendChild(input);
+  document.body.appendChild(form);
+  form.submit();
+});
 </script>
 
 </body>

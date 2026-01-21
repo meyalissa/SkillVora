@@ -1,0 +1,17 @@
+{
+    "name": "user/skill-vora",
+    "autoload": {
+        "psr-4": {
+            "User\\SkillVora\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Farah Aisyah",
+            "email": "farahaisyah2004@gmail.com"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^8.2"
+    }
+}
