@@ -31,22 +31,15 @@
       </div>
 
       <!-- OPTIONAL JOB DESCRIPTION -->
-      <textarea
+      <!-- <textarea
         id="jobDescription"
         placeholder="Paste job description here (optional)"
         rows="4"
         style="margin-top:15px; width:100%;"
-      ></textarea>
+      ></textarea> -->
 
       <div class="button-wrapper">
-        <button 
-          type="button"
-          class="btn primary check-btn"
-          id="analyzeBtn"
-          disabled
-        >
-          Check Resume
-        </button>
+        <button type="button" class="btn primary check-btn" id="analyzeBtn"> Check Resume </button>
       </div>
     </div>
 
@@ -57,10 +50,14 @@
 
   </section>
 
-  <!-- REQUIRED LOADING SECTION -->
-  <div id="loading" style="display:none;">
+<!-- Loading Popup -->
+<div id="loadingModal" class="loading-modal">
+  <div class="loading-content">
+    <div class="spinner"></div>
     <p>Analyzing resume, please wait...</p>
   </div>
+</div>
+
 
   <!-- REQUIRED RESULTS SECTION -->
   <div id="results" style="display:none;"></div>

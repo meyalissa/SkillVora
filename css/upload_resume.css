@@ -42,11 +42,11 @@
 
 /* Upload Box */
 .upload-box {
-  border: 2px dashed #cbd5e1;
+  border: 2px dashed var(--primary-color);
   border-radius: 16px;
   padding: 48px 32px;
   text-align: center;
-  background: #f8fafc;
+  background: var(--background-color);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -136,7 +136,25 @@
   color: #94a3b8;
 }
 
-/* Button
+.error-text {
+  display: none;
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+ /* Button */
+button {
+  border: none;
+  outline: none;
+  
+}
+
+.button-wrapper{
+  padding: 10px 10px;
+}
+
+/*
 .btn {
   width: 100%;
   padding: 16px 32px;
@@ -161,6 +179,48 @@
   cursor: not-allowed;
   opacity: 0.6;
 } */
+
+/* Loading Modal Overlay */
+.loading-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none; /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Loading Box */
+.loading-content {
+  background: white;
+  padding: 32px 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-content p {
+  font-size: 15px;
+  color: #374151;
+}
 
 /* Loading */
 .loading {

@@ -6,11 +6,14 @@ fetch("upload-resume.html")
     const uploadBox = document.getElementById('uploadBox');
     const fileInput = document.getElementById('fileInput');
     const analyzeBtn = document.getElementById('analyzeBtn');
-    const jobDescription = document.getElementById('jobDescription');
+    // const jobDescription = document.getElementById('jobDescription');
     const uploadSection = document.getElementById('uploadSection');
     const loading = document.getElementById('loading');
     const results = document.getElementById('results');
     const fileInfo = document.getElementById('fileInfo');
+    const errorText = document.getElementById('errorText');
+    const loadingModal = document.getElementById('loadingModal');
+
 
     
     let selectedFile = null;
@@ -67,6 +70,9 @@ fetch("upload-resume.html")
         return;
       }
 
+      // ✅ Hide error message once a valid file is uploaded
+      errorText.style.display = 'none';
+
       selectedFile = file;
       fileInfo.style.display = 'block';
       fileInfo.innerHTML = `
@@ -74,14 +80,13 @@ fetch("upload-resume.html")
         <strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB
       `;
       
-      analyzeBtn.disabled = false;
-      
       try {
         extractedText = await extractPDFText(file);
       } catch (err) {
         alert('Error reading PDF: ' + err.message);
       }
     }
+
 
     async function extractPDFText(file) {
       const arrayBuffer = await file.arrayBuffer();
@@ -98,15 +103,20 @@ fetch("upload-resume.html")
 
     analyzeBtn.addEventListener('click', async () => {
       if (!selectedFile || !extractedText) {
-        alert('Please Upload A Resume First');
+        errorText.style.display = 'block';
         return;
       }
 
-      uploadSection.style.display = 'none';
-      loading.style.display = 'block';
+      errorText.style.display = 'none';
+      //Show loading popup
+      loadingModal.style.display = 'flex';
+
+      // uploadSection.style.display = 'none';
+      // loading.style.display = 'block';
 
       setTimeout(() => {
-        const analysis = analyzeResume(extractedText, jobDescription.value);
+        const analysis = analyzeResume(extractedText, "");
+
         // SAVE result
         sessionStorage.setItem("analysis", JSON.stringify(analysis));
 
