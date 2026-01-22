@@ -432,11 +432,99 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
         return;
     }
 
+    // Show loading notification
+    showNotification("Preparing your PDF report...", "loading");
+
     try {
         const analysis = JSON.parse(analysisData);
         generatePDF(analysis);
+        
+        // Show success notification after a brief delay
+        setTimeout(() => {
+            showNotification("PDF downloaded successfully!", "success");
+        }, 500);
     } catch (error) {
         console.error("Error generating PDF:", error);
-        alert("Failed to generate PDF. Please try again.");
+        showNotification("Failed to generate PDF. Please try again.", "error");
     }
 });
+
+// Notification function
+function showNotification(message, type) {
+    // Remove any existing notifications
+    const existingNotif = document.querySelector('.pdf-notification');
+    if (existingNotif) {
+        existingNotif.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `pdf-notification ${type}`;
+    notification.textContent = message;
+
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+        animation: slideIn 0.3s ease-out;
+        max-width: 300px;
+    `;
+
+    // Set colors based on type
+    if (type === 'loading') {
+        notification.style.background = '#3b82f6';
+        notification.style.color = '#ffffff';
+    } else if (type === 'success') {
+        notification.style.background = '#10b981';
+        notification.style.color = '#ffffff';
+    } else if (type === 'error') {
+        notification.style.background = '#ef4444';
+        notification.style.color = '#ffffff';
+    }
+
+    // Add animation keyframes
+    if (!document.querySelector('#notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    document.body.appendChild(notification);
+
+    // Auto-remove notification after 3 seconds (except for loading)
+    if (type !== 'loading') {
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+}
