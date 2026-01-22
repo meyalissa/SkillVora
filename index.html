@@ -159,6 +159,68 @@
         </div>
         </section>
 
+        <!-- ===== FAQ SECTION ===== -->
+        <section class="faq-section" id="faq">
+
+        <div class="faq-header">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <p class="faq-subtitle">Find answers to common questions about SkillVora</p>
+        </div>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+            <div class="faq-question">
+                <h3>What is SkillVora?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>SkillVora is a career path exploration platform designed to help students and fresh graduates make informed career decisions through guided career suggestions and resume improvement support.</p>
+            </div>
+            </div>
+
+            <div class="faq-item">
+            <div class="faq-question">
+                <h3>Who can use SkillVora?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>SkillVora is perfect for students exploring career options, fresh graduates preparing resumes, and individuals who are unsure of their career direction.</p>
+            </div>
+            </div>
+
+            <div class="faq-item">
+            <div class="faq-question">
+                <h3>How does the Career Path Explorer work?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>The Career Path Explorer helps you discover careers that match your skills, interests, and goals through an interactive exploration system that provides personalized career recommendations.</p>
+            </div>
+            </div>
+
+            <div class="faq-item">
+            <div class="faq-question">
+                <h3>What does the Resume Checker do?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>The Resume Checker analyzes your resume and provides detailed feedback to help you improve its quality, structure, and content to make it more effective for job applications.</p>
+            </div>
+            </div>
+
+            <div class="faq-item">
+            <div class="faq-question">
+                <h3>Is SkillVora free to use?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, SkillVora is completely free to use for all students and fresh graduates looking to explore career paths and improve their resumes.</p>
+            </div>
+            </div>
+
+        </div>
+        </section>
 
         <!-- ===== FOOTER ===== -->
         <footer class="footer">
@@ -184,6 +246,27 @@
             nav.classList.toggle("active");
         };
         </script>
+
+<script>
+// FAQ Toggle Script
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+        // Close other items
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+    });
+});
+</script>
 
     </body>
     <script src="js/theme-toggle.js"></script>
