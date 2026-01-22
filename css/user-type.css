@@ -128,3 +128,62 @@ header .nav_img_logo {
     justify-content: center;
   }
 }
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .page-title {
+    font-size: 22px;
+    margin-top: 24px;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  .card-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .user-card {
+    width: 100%;
+    max-width: 320px;
+    height: 220px;
+  }
+
+  .icon-box {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 16px;
+  }
+
+  .card-icon {
+    font-size: 64px;
+  }
+
+  .card-text {
+    font-size: 13px;
+    bottom: 18px;
+  }
+
+  .next-wrapper {
+    margin-top: 50px;
+    justify-content: center;
+  }
+
+  .next-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  header {
+    padding: 10px 16px;
+  }
+}
+
