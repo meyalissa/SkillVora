@@ -89,15 +89,19 @@
       </div>
 
       <div class="interest-footer">
+
+        <button class="back-btn" id="backBtn">Back</button>
+
         <button class="next-btn" id="nextBtn" disabled>Next</button>
       </div>
     </div>
 
     <script>
       const userType = localStorage.getItem("userType"); // "SPM Leavers" / "Job Seeker"
-
+      
       const stepTitle = document.getElementById("stepTitle");
       const progressFill = document.getElementById("progressFill");
+      const backBtn = document.getElementById("backBtn");
       const nextBtn = document.getElementById("nextBtn");
       const buttons = document.querySelectorAll(".interest");
 
@@ -146,6 +150,11 @@
             nextBtn.disabled = true;
           }
         });
+      });
+
+      /* ✅ Back button depends on flow */
+      backBtn.addEventListener("click", () => {
+        window.location.href = "user-type.html";
       });
 
       // ✅ Next depends on user type
