@@ -92,11 +92,32 @@ h2 {
   border-color: var(--primary-color);
 }
 
-/* Next button placement */
+/* ✅ UPDATED footer layout for Back + Next */
 .interest-footer {
   margin-top: 48px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ✅ NEW — Back button style */
+.back-btn {
+  background: #ffffff;
+  color: #6f6f6f;
+  border: 1.5px solid #cccccc;
+
+  padding: 12px 34px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: var(--font-medium);
+
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.back-btn:hover {
+  opacity: 0.9;
 }
 
 /* ===============================
@@ -120,6 +141,7 @@ h2 {
 .next-btn:hover {
   opacity: 0.9;
 }
+
 /* NEW — disabled Next button state */
 .next-btn:disabled {
   opacity: 0.5;
