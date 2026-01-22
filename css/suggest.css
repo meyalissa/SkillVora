@@ -2,7 +2,7 @@
 @import "style.css";
 @import "start.css";
 
-/* Override*/
+/* Override */
 .resume-header {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
@@ -31,7 +31,6 @@ h2 {
 
 .career-card {
   width: 320px;          
-  height: 580px;         
   flex: 0 0 320px;       
   background: var(--background-color);
   border-radius: 15px;
@@ -41,6 +40,8 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: auto;
+  min-height: 500px; 
 }
 
 .career-card:hover {
@@ -228,7 +229,7 @@ h2 {
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
   width: 100%;
-  margin-top: auto;
+  margin-top: auto; 
 }
 
 .view-details-btn:hover {
@@ -295,7 +296,7 @@ h2 {
   .career-card {
     width: 45%;
     flex: 0 0 45%;
-    height: auto; 
+    height: auto;
   }
 }
 
