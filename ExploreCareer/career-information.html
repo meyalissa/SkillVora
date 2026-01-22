@@ -6,6 +6,11 @@
   <title>Career Information</title>
   <link rel="stylesheet" href="../css/career-info.css" />
   <link rel="stylesheet" href="../css/career-icon.css" />
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    rel="stylesheet"
+  />
 </head>
 <body>
 <header class="resume-header">
@@ -19,9 +24,12 @@
 <div class="container">
   <div class="header">
     <div class="breadcrumb">
-      Suggested Careers > <span id="careerBreadcrumb"></span>
+    <a href="suggestion.html">Suggested Careers></a><span id="careerBreadcrumb"></span>
     </div>
-    <button class="back-btn" onclick="window.location.href='suggestion.html'">Back to suggestions</button>
+    <button class="back-btn" onclick="window.location.href='suggestion.html'">
+      <span class="material-symbols-outlined back-icon">arrow_back</span>
+      Back to suggestions
+    </button>
   </div>
 
   <div class="hero">
@@ -47,6 +55,11 @@
       <h2>Key Skills & Qualifications</h2>
       <div class="skills" id="careerSkills"></div>
     </div>
+
+    <div class="section">
+      <h2>Requirements</h2>
+      <div id="careerRequirements"></div>
+    </div>
   </div>
 </div>
 
@@ -59,6 +72,7 @@
   }
 
   const career = JSON.parse(careerStr);
+  const userType = localStorage.getItem("userType"); // "SPM Leavers" or "Job Seeker"
 
   // Set breadcrumb, title, description
   document.getElementById("careerBreadcrumb").textContent = career.title;
@@ -87,6 +101,57 @@
     tag.textContent = skill;
     skillsContainer.appendChild(tag);
   });
+
+  // Populate requirements
+  const requirementsContainer = document.getElementById("careerRequirements");
+
+  function renderRequirements(career, userType) {
+        /* ---- SPM LEAVERS ---- */
+        if (userType === "SPM Leavers" && career.spm) {
+          const req = career.spm;
+          return `
+            <div class="requirements">
+              <h4>SPM Requirements</h4>
+              <p><strong>Minimum Qualification:</strong> 
+                <span class="qualification-tag">Diploma / Degree</span>
+              </p>
+              <ul class="subjects">
+                ${req.subjects
+                  .map(sub => `
+                    <li>
+                      <span class="subject-name">${sub.name}</span>
+                      <span class="subject-grade">${sub.grade}</span>
+                    </li>`).join("")}
+              </ul>
+              <p class="notes">${req.notes}</p>
+            </div>
+          `;
+        }
+
+        /* ---- JOB SEEKERS ---- */
+        if (career.jobSeeker) {
+          const jobReq = career.jobSeeker;
+          // Show only first 2 courses
+          const allCourses = jobReq.courses;
+
+          return `
+            <div class="requirements">
+              <h4>Career Requirements</h4>
+              <p><strong>Minimum Qualification:</strong> 
+                <span class="qualification-tag">Diploma / Degree</span>
+              </p>
+              <p><strong>Recommended Course(s):</strong></p>
+              <ul class="subjects">
+                ${allCourses.map(course => `<li>${course}</li>`).join("")}
+              </ul>
+              <p class="notes">${jobReq.notes}</p>
+            </div>
+          `;
+        }
+
+        return "";
+      }
+
+
+  requirementsContainer.innerHTML = renderRequirements(career, userType);
 </script>
-</body>
-</html>
