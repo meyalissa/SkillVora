@@ -22,41 +22,17 @@ h2 {
   padding: 20px;
 }
 
-/* Desktop: 3 cards per row */
+/* ✅ FIXED WIDTH CARDS */
 .careers-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
-  justify-items: center;
-}
-
-/* Medium screens: 3 cards per row */
-@media (max-width: 1200px) {
-  .careers-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Small screens: 2 cards per row */
-@media (max-width: 992px) {
-  .careers-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile: 1 card per row */
-@media (max-width: 768px) {
-  .careers-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .career-card {
-    min-height: 350px;
-    width: 90%;
-  }
 }
 
 .career-card {
+  width: 320px; /* FIXED width for all cards */
+  flex: 0 0 320px; /* Prevent shrinking or growing */
   background: var(--background-color);
   border-radius: 15px;
   padding: 20px;
@@ -282,7 +258,7 @@ h2 {
   object-fit: cover;
 }
 
-/* ✅ ONLY CHANGE IS HERE */
+/* Back Button */
 .back-btn {
   background-color: transparent;
   color: var(--primary-color);
@@ -312,4 +288,21 @@ h2 {
 .back-btn:active {
   transform: translateY(0);
   box-shadow: 0 3px 8px rgba(0, 173, 142, 0.25);
+}
+
+/* Small screens: 2 cards per row */
+@media (max-width: 992px) {
+  .career-card {
+    width: 45%;
+    flex: 0 0 45%;
+  }
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 768px) {
+  .career-card {
+    width: 90%;
+    flex: 0 0 90%;
+    min-height: 350px;
+  }
 }

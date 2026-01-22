@@ -406,41 +406,6 @@ const careerData = [
   },
    // ================= DESIGN & CREATIVITY =================
   {
-    title: "UI / UX Designer",
-    image: "../assets/symbol/design_services.png",
-    description: "Designs user-friendly digital experiences.",
-    roles: [
-      "Creates wireframes and prototypes",
-      "Conducts usability testing",
-      "Collaborates with developers"
-    ],
-    interests: ["Design & Creativity"],
-    backgrounds: ["UI / UX Design", "Graphic Design", "Creative Technology"],
-    skills: ["Creativity", "Communication", "Problem-solving"],
-
-    spm: {
-      education: "SPM / equivalent",
-      subjects: [
-        { name: "English", grade: "Minimum C" },
-        { name: "Mathematics", grade: "Minimum C" }
-      ],
-      notes: "Portfolio and practical skills are more important than exam results"
-    },
-
-    jobSeeker: {
-      education: "Diploma / Degree",
-      courses: [
-        "Diploma in Graphic Design",
-        "Diploma in Multimedia Design",
-        "Bachelor of Graphic Design",
-        "Bachelor of Multimedia Technology",
-        "Bachelor of UI/UX Design"
-      ],
-      notes: "Portfolio, UX research skills and design tools are required"
-    }
-  },
-
-  {
     title: "Graphic Designer",
     image: "../assets/symbol/brush.png",
     description: "Creates visual designs for digital and print media.",
@@ -660,7 +625,134 @@ const careerData = [
       notes: "Professional teaching certification is required for formal schools"
     }
   },
-  
+    // ================= BUSINESS & MANAGEMENT =================
+  {
+    title: "Accountant",
+    image: "../assets/symbol/account_balance.png",
+    description: "Manages financial records and prepares financial statements.",
+    roles: [
+      "Prepares financial reports",
+      "Manages accounts payable/receivable",
+      "Analyzes financial data for decision-making"
+    ],
+    interests: ["Business & Management", "Data & Analytics"],
+    backgrounds: ["Finance", "Accounting", "Business Administration"],
+    skills: ["Analytical thinking", "Problem-solving", "Organisational skills"],
+    spm: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum C" },
+        { name: "Accounting / Business Studies", grade: "Minimum C" }
+      ],
+      notes: "Strong numerical and analytical skills are essential"
+    },
+    jobSeeker: {
+      education: "Diploma / Degree",
+      courses: [
+        "Diploma in Accounting",
+        "Bachelor of Accounting",
+        "Bachelor of Finance",
+        "Diploma in Business Administration"
+      ],
+      notes: "Proficiency in accounting software and analytical skills are required"
+    }
+  },
+
+  {
+    title: "Project Manager",
+    image: "../assets/symbol/assignment_turned_in.png",
+    description: "Plans, executes, and finalizes projects according to deadlines.",
+    roles: [
+      "Defines project scope and objectives",
+      "Manages project resources and timelines",
+      "Communicates with stakeholders"
+    ],
+    interests: ["Business & Management"],
+    backgrounds: ["Project Management", "Business Administration"],
+    skills: ["Organisational skills", "Problem-solving", "Communication"],
+    spm: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum C" },
+        { name: "English", grade: "Minimum C" }
+      ],
+      notes: "Strong organisational and leadership skills are useful"
+    },
+    jobSeeker: {
+      education: "Diploma / Degree",
+      courses: [
+        "Diploma in Project Management",
+        "Bachelor of Business Administration",
+        "Bachelor in Management"
+      ],
+      notes: "Project planning, resource management, and leadership skills required"
+    }
+  },
+
+  // ================= ENGINEERING =================
+  {
+    title: "Engineer",
+    image: "../assets/symbol/engineering.png",
+    description: "Designs, develops, and maintains systems, structures, or machines.",
+    roles: [
+      "Plans and executes engineering projects",
+      "Analyzes and solves technical problems",
+      "Ensures compliance with standards and safety regulations"
+    ],
+    interests: ["Technology"],
+    backgrounds: ["Software Engineering", "Mechanical Engineering", "Electrical Engineering", "Civil Engineering"],
+    skills: ["Analytical thinking", "Problem-solving", "Practical / Hands-on Skills"],
+    spm: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum B" },
+        { name: "Physics", grade: "Minimum C" }
+      ],
+      notes: "Strong mathematical and problem-solving abilities are required"
+    },
+    jobSeeker: {
+      education: "Diploma / Degree",
+      courses: [
+        "Diploma in Engineering",
+        "Bachelor of Engineering (Mechanical / Electrical / Civil / Software)",
+        "Bachelor of Technology"
+      ],
+      notes: "Engineering projects require technical knowledge, problem-solving, and teamwork"
+    }
+  },
+
+  {
+    title: "Finance Analyst",
+    image: "../assets/symbol/analytics.png",
+    description: "Analyzes financial data to guide investment and business decisions.",
+    roles: [
+      "Evaluates financial performance",
+      "Prepares reports and forecasts",
+      "Advises on investment opportunities"
+    ],
+    interests: ["Business & Management", "Data & Analytics"],
+    backgrounds: ["Finance", "Business Administration", "Accounting", "Statistics"],
+    skills: ["Analytical thinking", "Problem-solving"],
+    spm: {
+      education: "SPM / equivalent",
+      subjects: [
+        { name: "Mathematics", grade: "Minimum B" },
+        { name: "English", grade: "Minimum C" }
+      ],
+      notes: "Strong analytical and numerical skills required"
+    },
+    jobSeeker: {
+      education: "Diploma / Degree",
+      courses: [
+        "Diploma in Finance",
+        "Bachelor of Finance",
+        "Bachelor of Accounting",
+        "Bachelor of Business Administration"
+      ],
+      notes: "Proficiency in Excel, financial modeling, and analytical tools required"
+    }
+  },
+
   // ================= NO MATCH PREVENTION =================
   {
     title: "Junior Executive",
