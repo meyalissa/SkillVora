@@ -1,7 +1,12 @@
 @import "var.css";
 @import "style.css";
 @import "start.css";
-
+body {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--background-color) 100%);
+  font-family:  "DM Sans", sans-serif;
+  padding: 0;
+  min-height: 100vh;
+}
 /* Override */
 .resume-header {
   margin-bottom: 0 !important;
