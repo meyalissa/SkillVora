@@ -1,107 +1,173 @@
-/* Import other base styles */
-@import "var.css";
-@import "style.css";
-@import "start.css";
-
-/* General reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body styling */
 body {
-  background-color: #f5f5f5;
-  padding: 15px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  font-family:  "DM Sans", sans-serif;
+  padding: 0;
+  min-height: 100vh;
 }
 
-/* Container */
-.container {
-  max-width: 800px;
-  margin: 15px auto 0 auto;
+/* Logo header - keeping original styling */
+.resume-header {
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  padding: 15px 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
 }
 
-/* Header */
+.logo a {
+  display: inline-block;
+}
+
+.nav_img_logo {
+  height: 40px;
+}
+
+/* Container with elevated card design */
+.container {
+  max-width: 900px;
+  margin: 0 auto 15px auto;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header with gradient accent */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 18px 25px;
+  background: linear-gradient(135deg, #00a896 0%, #008c7a 100%);
+  color: white;
 }
 
 .breadcrumb {
-  color: #666;
-  font-size: 13px;
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between a and span */
+}
+.back-icon {
+  font-size: 20px;
+  line-height: 1;
 }
 
+/* Link (previous path) */
+.breadcrumb a {
+  color: #e6f7f4;          /* soft contrast on green bg */
+  text-decoration: none;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* Current page */
 .breadcrumb span {
-  color: #00a896;
+  font-weight: 600;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .back-btn {
-  background-color: #00a896;
-  color: white;
+  display: inline-flex;              /* IMPORTANT */
+  align-items: center;               /* vertical center */
+  gap: 10px;                         /* space between icon & text */
+
+  background-color: white;
+  color: #00a896;
   border: none;
-  padding: 8px 20px;
-  border-radius: 25px;
+  padding: 10px 26px;
+  border-radius: 999px;              /* perfect pill */
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
+
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "DM Sans", sans-serif;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
+.back-icon {
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
 
 .back-btn:hover {
-  background-color: #008c7a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Hero section */
+/* Hero section with modern layout */
 .hero {
   display: flex;
   align-items: center;
   gap: 25px;
-  padding: 25px 25px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 30px 25px;
+  background: linear-gradient(135deg, #f8fcfc 0%, #ffffff 100%);
+  border-bottom: 1px solid #e8f4f3;
 }
 
 .hero-image {
   flex-shrink: 0;
 }
 
-/* Career icon styling (circular image like suggestion page) */
 .career-icon {
   width: 100px;
   height: 100px;
-  margin: 0 auto 10px;
-  overflow: hidden;   /* ensures image stays within circle */
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  background-color: #f5f5f5;
+  box-shadow: 0 8px 24px rgba(0, 168, 150, 0.15);
+  background: linear-gradient(135deg, #d4f4f1 0%, #ffffff 100%);
+  border: 3px solid #d4f4f1;
+  transition: all 0.3s ease;
+}
+
+.career-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 168, 150, 0.25);
 }
 
 .career-icon img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* maintains aspect ratio and fills the circle */
+  object-fit: cover;
 }
 
-/* Hero content */
 .hero-content h1 {
-  font-size: 24px;
+  font-size: 28px;
   color: #1a1a1a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .hero-content p {
   font-size: 15px;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Content section */
@@ -111,6 +177,17 @@ body {
 
 .section {
   margin-bottom: 25px;
+  animation: slideIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.section:nth-child(1) { animation-delay: 0.1s; }
+.section:nth-child(2) { animation-delay: 0.2s; }
+.section:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideIn {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
 }
 
 .section:last-child {
@@ -118,17 +195,43 @@ body {
 }
 
 .section h2 {
-  font-size: 17px;
+  font-size: 18px;
   color: #1a1a1a;
   margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+  padding-left: 15px;
 }
 
-/* Roles list */
+.section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(135deg, #00a896 0%, #008c7a 100%);
+  border-radius: 2px;
+}
+
+/* Enhanced role items */
 .role-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, #f8fcfc 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 1px solid #e8f4f3;
+  transition: all 0.3s ease;
+}
+
+.role-item:hover {
+  border-color: #00a896;
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.1);
+  transform: translateX(4px);
 }
 
 .role-item:last-child {
@@ -136,66 +239,208 @@ body {
 }
 
 .checkmark {
-  width: 22px;
-  height: 22px;
-  background-color: #00a896;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #00a896 0%, #008c7a 100%);
   border-radius: 50%;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 2px;
+  box-shadow: 0 2px 8px rgba(0, 168, 150, 0.3);
 }
 
 .checkmark::after {
   content: '✓';
   color: white;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 }
 
 .role-item p {
   color: #333;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-/* Skills tags */
+/* Enhanced skills tags */
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .skill-tag {
-  background-color: #d4f4f1;
+  background: linear-gradient(135deg, #d4f4f1 0%, #e0f7f4 100%);
   color: #00a896;
-  padding: 6px 16px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid #b8ebe6;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, #00a896 0%, #008c7a 100%);
+  color: white;
+  border-color: #00a896;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.3);
+}
+
+/* Enhanced requirements section */
+.requirements {
+  background: linear-gradient(135deg, #f8fcfc 0%, #f0f9f8 100%);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 168, 150, 0.08);
+  border: 2px solid #d4f4f1;
+}
+
+.requirements h4 {
+  margin: 0 0 16px 0;
+  font-size: 17px;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.requirements h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00a896 0%, #008c7a 100%);
+  border-radius: 2px;
+}
+
+.requirements > p {
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #333;
+}
+
+.requirements strong {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.qualification-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #00a896 0%, #008c7a 100%);
+  color: white;
+  padding: 8px 18px;
   border-radius: 20px;
+  font-weight: 600;
   font-size: 13px;
-  font-weight: 500;
+  margin-top: 5px;
+  box-shadow: 0 2px 8px rgba(0, 168, 150, 0.3);
+}
+
+.subjects {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subjects li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.subjects li:hover {
+  border-left-color: #00a896;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.15);
+}
+
+.subject-name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 15px;
+}
+
+.subject-grade {
+  color: #00a896;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #d4f4f1 0%, #e0f7f4 100%);
+  padding: 6px 14px;
+  border-radius: 15px;
   border: 1px solid #b8ebe6;
+}
+
+.notes {
+  margin-top: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  border-left: 3px solid #00a896;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
+  .resume-header {
+    padding: 12px 20px;
+  }
+
+  .nav_img_logo {
+    height: 35px;
+  }
+
+  .container {
+    border-radius: 16px;
+    margin: 0 10px 20px 10px;
   }
 
   .header {
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
+    padding: 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
   }
 
   .career-icon {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
   }
 
   .hero-content h1 {
-    font-size: 22px;
+    font-size: 26px;
+  }
+
+  .content {
+    padding: 25px 20px;
+  }
+
+  .section h2 {
+    font-size: 18px;
   }
 }
