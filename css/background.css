@@ -102,7 +102,7 @@ h2 {
 
 /* Back button */
 .back-btn {
-  background: #ffffff;
+  background: var(--background-color);
   border: 1.5px solid #cccccc;
   color: #6b7280;
   padding: 12px 32px;

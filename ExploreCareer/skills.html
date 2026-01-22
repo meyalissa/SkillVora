@@ -115,6 +115,8 @@
         </button>
       </div>
 
+      
+
       <!-- Footer -->
       <div class="skills-footer">
         <button class="back-btn" id="backBtn">Back</button>
@@ -122,6 +124,14 @@
         <button class="next-btn" id="nextBtn" disabled>
           Show Suggested Careers
         </button>
+      </div>
+    </div>
+
+    <!-- Loading Popup -->
+    <div id="loadingModal" class="loading-modal">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <p>Analyzing Suitable Career Paths, please wait...</p>
       </div>
     </div>
 
@@ -213,6 +223,30 @@
         window.location.href = "suggestion.html";
       });
     </script>
+  <script>
+    nextBtn.addEventListener("click", () => {
+      if (selectedSkills.length === 0) return;
+
+      localStorage.setItem("skills", JSON.stringify(selectedSkills));
+
+      loadingModal.style.display = "flex";
+      nextBtn.disabled = true;
+
+      setTimeout(() => {
+        // 🔥 Simulate computation (like analyzeResume)
+        const start = Date.now();
+        while (Date.now() - start < 900) {
+          Math.sqrt(Math.random() * 9999);
+        }
+
+        window.location.href = "suggestion.html";
+      }, 100);
+    });
+
+  </script>
+
+
+
   </body>
       <script src="../js/theme-toggle.js"></script>
 </html>

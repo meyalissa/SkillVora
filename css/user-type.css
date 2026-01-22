@@ -22,6 +22,7 @@ header .nav_img_logo {
   font-weight: 700;
   margin-top: 40px;
   margin-bottom: 60px;
+  color: var(--primary-color);
 }
 
 /* Cards */
@@ -37,7 +38,7 @@ header .nav_img_logo {
   height: 250px;
   border-radius: 22px;
   border: 1.8px solid rgba(0, 173, 142, 0.35);
-  background: #ffffff;
+  background: var(--background-color);
   cursor: pointer;
 
   display: flex;
@@ -54,14 +55,14 @@ header .nav_img_logo {
   width: 90px;
   height: 90px;
   border-radius: 14px;
-  background: #ffffff;
+  /* background: #ffffff; */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   /* soft floating effect */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08); */
   margin-bottom: 20px;
 }
 
