@@ -24,6 +24,7 @@ body {
   background-color: var(--background-color);
   color: var(--dark-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 section {
@@ -75,6 +76,10 @@ nav ul li a {
 nav ul li a:hover,
 nav ul li a.active {
   border-bottom: 3px solid var(--primary-color);
+}
+
+.theme-toggle img{
+  color: var(--primary-color);
 }
 
 /* ===== HAMBURGER ===== */

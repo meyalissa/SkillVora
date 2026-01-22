@@ -10,18 +10,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 </head>
 <body>
-
-<header class="resume-header">
-  <div class="logo">
-    <a href="../index.html">
-      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
-    </a>
+  
+<header>
+  <!-- LEFT SIDE -->
+  <div class="header-left">
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
+      </a>
+    </div>
   </div>
 
-  <a href="../ExploreCareer/career.html" class="btn outline small">
-    Explore Career Paths
-  </a>
+  <!-- RIGHT SIDE -->
+  <div style="display:flex; align-items:center; gap:1.25rem;">
+    <a href="../ExploreCareer/career.html" class="btn outline small">
+      Explore Career Paths
+    </a>
+
+    <div class="theme-toggle">
+      <img id="themeIcon" src="../assets/sun_line.png" alt="Toggle theme">
+    </div>
+  </div>
 </header>
+
 
 <section class="resume-section">
   <h1 class="resume-title">Resume Checker</h1>
@@ -40,4 +51,6 @@
 <script src="resume-analyzer.js" defer></script>
 
 </body>
+    <script src="../js/theme-toggle.js"></script>
+
 </html>

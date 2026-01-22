@@ -12,6 +12,8 @@
   --dark-color: #14223b;
   --text-grey: #656b81;
   --error-color: #d9534f;
+  --overlay-bg: rgba(255, 255, 255, 0.65);
+  
 
   /* Typography */
   --body-font: "DM Sans", sans-serif;
@@ -41,6 +43,17 @@
   /* Z-index */
   --z-fixed: 100;
 }
+
+[data-theme="dark"] {
+  --background-color: #0f172a;
+  --primary-color: #4cc4ae;
+  --secondary-color: #1e293b;
+  --white-color: #0f172a;
+  --dark-color: #e5e7eb;
+  --text-grey: #9ca3af;
+  --overlay-bg: rgba(15, 23, 42, 0.75);
+}
+
 
 /* ===== RESPONSIVE VARIABLES ===== */
 @media (max-width: 900px) {

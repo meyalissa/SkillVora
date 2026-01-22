@@ -13,21 +13,28 @@
   </head>
   <body>
     <!-- ===== HEADER ===== -->
-    <header class="resume-header">
-      <div class="logo">
-        <a href="../index.html">
-          <img
-            src="../assets/logo.png"
-            class="nav_img_logo"
-            alt="SkillVora Logo"
-          />
-        </a>
+    <header>
+      <!-- LEFT SIDE -->
+      <div class="header-left">
+        <div class="logo">
+          <a href="../index.html">
+            <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo">
+          </a>
+        </div>
       </div>
 
-      <a href="../CheckResume/resume-checker.html" class="btn outline small">
-        Resume Checker
-      </a>
+      <!-- RIGHT SIDE -->
+      <div style="display:flex; align-items:center; gap:1.25rem;">
+        <a href="../CheckResume/resume-checker.html" class="btn outline small">
+          Resume Checker
+        </a>
+
+        <div class="theme-toggle">
+          <img id="themeIcon" src="../assets/sun_line.png" alt="Toggle theme">
+        </div>
+      </div>
     </header>
+
 
     <!-- ===== RESUME CHECKER SECTION ===== -->
     <section class="resume-section">
@@ -43,4 +50,6 @@
       </a>
     </section>
   </body>
+      <script src="../js/theme-toggle.js"></script>
+
 </html>
