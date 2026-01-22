@@ -1,9 +1,12 @@
 const themeIcon = document.getElementById("themeIcon");
+const siteLogo = document.getElementById("siteLogo");
 const root = document.documentElement;
 
 // Detect correct asset path
-const isSubPage = window.location.pathname.includes("ExploreCareer") ||
-                  window.location.pathname.includes("CheckResume");
+const isSubPage =
+  window.location.pathname.includes("ExploreCareer") ||
+  window.location.pathname.includes("CheckResume") ||
+  window.location.pathname.includes("user-type");
 
 const assetPath = isSubPage ? "../assets/" : "assets/";
 
@@ -11,22 +14,35 @@ const assetPath = isSubPage ? "../assets/" : "assets/";
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme) {
   root.setAttribute("data-theme", savedTheme);
-  updateIcon(savedTheme);
+  updateUI(savedTheme);
 }
 
-// Toggle theme
-themeIcon.addEventListener("click", () => {
-  const isDark = root.getAttribute("data-theme") === "dark";
-  const newTheme = isDark ? "light" : "dark";
+// Toggle theme (only if icon exists)
+if (themeIcon) {
+  themeIcon.addEventListener("click", () => {
+    const isDark = root.getAttribute("data-theme") === "dark";
+    const newTheme = isDark ? "light" : "dark";
 
-  root.setAttribute("data-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-  updateIcon(newTheme);
-});
+    root.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    updateUI(newTheme);
+  });
+}
 
-function updateIcon(theme) {
-  themeIcon.src =
-    theme === "dark"
-      ? `${assetPath}moon_fill.png`
-      : `${assetPath}sun_line.png`;
+function updateUI(theme) {
+  // Change toggle icon
+  if (themeIcon) {
+    themeIcon.src =
+      theme === "dark"
+        ? `${assetPath}moon_fill.png`
+        : `${assetPath}sun_line.png`;
+  }
+
+  // Change logo
+  if (siteLogo) {
+    siteLogo.src =
+      theme === "dark"
+        ? `${assetPath}dark_logo.png`
+        : `${assetPath}logo.png`;
+  }
 }
