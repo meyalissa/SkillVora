@@ -13,55 +13,56 @@
   />
 </head>
 <body>
-<header class="resume-header">
-  <div class="logo">
-    <a href="../index.html">
-      <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo" />
-    </a>
-  </div>
-</header>
-
-<div class="container">
-  <div class="header">
-    <div class="breadcrumb">
-    <a href="suggestion.html">Suggested Careers></a><span id="careerBreadcrumb"></span>
+  <header class="resume-header">
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../assets/logo.png" class="nav_img_logo" alt="SkillVora Logo" />
+      </a>
     </div>
-    <button class="back-btn" onclick="window.location.href='suggestion.html'">
-      <span class="material-symbols-outlined back-icon">arrow_back</span>
-      Back to suggestions
-    </button>
-  </div>
+  </header>
 
-  <div class="hero">
-    <div class="hero-image">
-      <!-- Career image container -->
-      <div class="career-icon">
-        <img id="careerImage" src="" alt="">
+  <div class="container">
+    <div class="header">
+      <div class="breadcrumb">
+      <a href="suggestion.html">Suggested Careers></a><span id="careerBreadcrumb"></span>
+      </div>
+      <button class="back-btn" onclick="window.location.href='suggestion.html'">
+        <span class="material-symbols-outlined back-icon">arrow_back</span>
+        Back to suggestions
+      </button>
+    </div>
+
+    <div class="hero">
+      <div class="hero-image">
+        <!-- Career image container -->
+        <div class="career-icon">
+          <img id="careerImage" src="" alt="">
+        </div>
+      </div>
+      <div class="hero-content">
+        <h1 id="careerTitle"></h1>
+        <p id="careerDescription"></p>
       </div>
     </div>
-    <div class="hero-content">
-      <h1 id="careerTitle"></h1>
-      <p id="careerDescription"></p>
+
+    <div class="content">
+      <div class="section">
+        <h2>About the role</h2>
+        <div id="careerRoles"></div>
+      </div>
+
+      <div class="section">
+        <h2>Key Skills & Qualifications</h2>
+        <div class="skills" id="careerSkills"></div>
+      </div>
+
+      <div class="section">
+        <h2>Requirements</h2>
+        <div id="careerRequirements"></div>
+      </div>
     </div>
   </div>
-
-  <div class="content">
-    <div class="section">
-      <h2>About the role</h2>
-      <div id="careerRoles"></div>
-    </div>
-
-    <div class="section">
-      <h2>Key Skills & Qualifications</h2>
-      <div class="skills" id="careerSkills"></div>
-    </div>
-
-    <div class="section">
-      <h2>Requirements</h2>
-      <div id="careerRequirements"></div>
-    </div>
-  </div>
-</div>
+</body>
 
 <script>
   // Get selected career from localStorage
