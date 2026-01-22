@@ -64,6 +64,8 @@ header .header-left nav {
 
 header .header-left nav ul {
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
@@ -78,7 +80,14 @@ nav ul li a.active {
   border-bottom: 3px solid var(--primary-color);
 }
 
-.theme-toggle img{
+.theme-toggle {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.theme-toggle img {
+  width: 24px;
+  height: 24px;
   color: var(--primary-color);
 }
 
@@ -98,47 +107,6 @@ header .hamburger div {
   height: 2px;
   margin: 6px 0;
   background: var(--dark-color);
-}
-
-/* ===== MOBILE NAV ===== */
-@media (max-width: 1100px) {
-  header {
-    height: 100px;
-    padding: 0 var(--space-3);
-  }
-
-  header .hamburger {
-    display: block;
-  }
-
-  header .header-left nav {
-    position: absolute;
-    top: -300%;
-    left: 0;
-    width: 100%;
-    background: var(--primary-color);
-    padding: var(--space-4);
-    text-align: center;
-    transition: 0.3s ease;
-  }
-
-  header .header-left nav.active {
-    top: 100px;
-  }
-
-  header .header-left nav ul {
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  nav ul li a {
-    color: var(--white-color);
-  }
-
-  nav ul li a:hover,
-  nav ul li a.active {
-    border-bottom: none;
-  }
 }
 
 /* ===== HERO SECTION ===== */
@@ -218,23 +186,6 @@ header .hamburger div {
   cursor: pointer;
 }
 
-
-/* ===== RESPONSIVE HERO ===== */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-image {
-    margin-top: var(--space-4);
-  }
-}
-
 /* ===== ABOUT SKILLVORA SECTION ===== */
 .about-skillvora {
   display: flex;
@@ -286,6 +237,7 @@ header .hamburger div {
 /* LIST */
 .about-list {
   margin-top: var(--space-2);
+  padding-left: 0;
 }
 
 .about-list li {
@@ -298,26 +250,9 @@ header .hamburger div {
 }
 
 .about-list li::before {
-  content: "✔";
+  content: "✓";
   color: var(--primary-color);
   font-weight: var(--font-bold);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .about-skillvora {
-    flex-direction: column;
-    text-align: center;
-    background: none;
-  }
-
-  .about-content {
-    max-width: 100%;
-  }
-
-  .about-list li {
-    justify-content: center;
-  }
 }
 
 /* ===== TEAM SECTION ===== */
@@ -350,7 +285,6 @@ header .hamburger div {
   gap: 24px;
   justify-content: center;
 }
-
 
 .team-card {
   background: linear-gradient(
@@ -389,35 +323,6 @@ header .hamburger div {
   font-weight: var(--font-bold);
   margin-bottom: var(--space-1);
 }
-
-.team-card {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 173, 142, 0.35),
-    rgba(0, 173, 142, 0.7)
-  );
-  border-radius: 28px;
-  padding: var(--space-4);
-  width: 100%;
-  max-width: 260px;
-  color: var(--white-color);
-  text-align: center;
-}
-
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .team-container {
-    grid-template-columns: repeat(2, 260px);
-  }
-}
-
-@media (max-width: 600px) {
-  .team-container {
-    grid-template-columns: 1fr;
-  }
-}
-
 
 /* ===== FAQ SECTION ===== */
 .faq-section {
@@ -500,17 +405,6 @@ header .hamburger div {
   margin: 0;
 }
 
-/* ===== FAQ RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .faq-question h3 {
-    font-size: 1rem;
-  }
-  
-  .faq-icon {
-    font-size: 1.25rem;
-  }
-}
-
 /* ===== FOOTER ===== */
 .footer {
   background-color: var(--primary-color);
@@ -541,23 +435,12 @@ header .hamburger div {
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* ===== FOOTER RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .footer {
-    padding: var(--space-4) var(--space-3);
-  }
-
-  .footer-img {
-    width: 70px;
-  }
-}
-
 /* Loading Modal Overlay */
 .loading-modal {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
-  display: none; /* hidden by default */
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
@@ -605,29 +488,291 @@ header .hamburger div {
   display: block;
 }
 
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 4px solid #e2e8f0;
-  border-top: 4px solid var(--primary-color);
-  border-radius: 50%;
-  margin: 0 auto 24px;
-  animation: spin 1s linear infinite;
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+
+/* Tablets and smaller laptops */
+@media (max-width: 1100px) {
+  header {
+    height: 80px;
+    padding: 0 var(--space-3);
+  }
+
+  header .header-left .logo {
+    width: 160px;
+  }
+
+  header .hamburger {
+    display: block;
+  }
+
+  header .header-left nav {
+    position: absolute;
+    top: -300%;
+    left: 0;
+    width: 100%;
+    /* background: var(--primary-color); */
+    padding: var(--space-4);
+    text-align: center;
+    transition: 0.3s ease;
+    margin-left: 0;
+  }
+
+  header .header-left nav.active {
+    top: 80px;
+  }
+
+  header .header-left nav ul {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  nav ul li a {
+    color: var(--white-color);
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    border-bottom: none;
+  }
+
+  .team-container {
+    grid-template-columns: repeat(2, 260px);
+    gap: var(--space-3);
+  }
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Tablets */
+@media (max-width: 900px) {
+  section {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-image {
+    margin-top: var(--space-4);
+  }
+
+  .hero-image img {
+    max-width: 400px;
+  }
+
+  .about-skillvora {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-4) var(--space-3);
+    padding-left: var(--space-3);
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
+  .about-list li {
+    justify-content: center;
+  }
+
+  .about-image img {
+    max-width: 400px;
+  }
+
+  .faq-question h3 {
+    font-size: 1rem;
+  }
+  
+  .faq-icon {
+    font-size: 1.25rem;
+  }
+
+  .footer {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .footer-img {
+    width: 70px;
+  }
 }
 
-.loading h2 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 8px;
+/* Mobile devices */
+@media (max-width: 600px) {
+  header {
+    height: 70px;
+    padding: 0 var(--space-2);
+  }
+
+  header .header-left .logo {
+    width: 140px;
+  }
+
+  header .header-left nav.active {
+    top: 70px;
+  }
+
+  .theme-toggle img {
+    width: 20px;
+    height: 20px;
+  }
+
+  section {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .hero {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px 24px;
+  }
+
+  .hero-image img {
+    max-width: 300px;
+  }
+
+  .about-skillvora {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .about-title {
+    font-size: 1.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .about-text {
+    font-size: 0.9rem;
+  }
+
+  .about-image img {
+    max-width: 280px;
+  }
+
+  .team-section {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .team-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .team-card {
+    max-width: 100%;
+  }
+
+  .team-title {
+    font-size: 1.5rem;
+  }
+
+  .faq-section {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .faq-title {
+    font-size: 1.5rem;
+  }
+
+  .faq-question {
+    padding: var(--space-2);
+  }
+
+  .faq-question h3 {
+    font-size: 0.95rem;
+  }
+
+  .faq-icon {
+    font-size: 1.1rem;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 0 var(--space-2) var(--space-2);
+  }
+
+  .footer {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .footer-img {
+    width: 60px;
+  }
+
+  .footer-quotes {
+    font-size: 0.9rem;
+  }
+
+  .footer-slogan {
+    font-size: 0.8rem;
+  }
+
+  .loading-content {
+    margin: 0 var(--space-2);
+    padding: 24px 28px;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+  }
 }
 
-.loading p {
-  color: #64748b;
-  font-size: 16px;
+/* Extra small devices */
+@media (max-width: 400px) {
+  header .header-left .logo {
+    width: 120px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-image img {
+    max-width: 250px;
+  }
+
+  .about-image img {
+    max-width: 240px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+
+  .team-card {
+    padding: var(--space-3);
+  }
+
+  .faq-question h3 {
+    font-size: 0.875rem;
+  }
 }
