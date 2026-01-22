@@ -22,7 +22,6 @@ h2 {
   padding: 20px;
 }
 
-/* ✅ FIXED WIDTH CARDS */
 .careers-grid {
   display: flex;
   flex-wrap: wrap;
@@ -31,8 +30,9 @@ h2 {
 }
 
 .career-card {
-  width: 320px; /* FIXED width for all cards */
-  flex: 0 0 320px; /* Prevent shrinking or growing */
+  width: 320px;          
+  height: 580px;         
+  flex: 0 0 320px;       
   background: var(--background-color);
   border-radius: 15px;
   padding: 20px;
@@ -295,6 +295,7 @@ h2 {
   .career-card {
     width: 45%;
     flex: 0 0 45%;
+    height: auto; 
   }
 }
 
@@ -303,6 +304,6 @@ h2 {
   .career-card {
     width: 90%;
     flex: 0 0 90%;
-    min-height: 350px;
+    height: auto;
   }
 }
