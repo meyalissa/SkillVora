@@ -23,12 +23,40 @@ h2 {
   padding: 20px;
 }
 
+/* Desktop: 3 cards per row */
 .careers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  justify-items: center;  
+  justify-items: center;
 }
+
+/* Medium screens: 3 cards per row */
+@media (max-width: 1200px) {
+  .careers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small screens: 2 cards per row */
+@media (max-width: 992px) {
+  .careers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 768px) {
+  .careers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .career-card {
+    min-height: 350px; 
+    width: 90%; 
+  }
+}
+
 
 
 .career-card {
@@ -97,7 +125,6 @@ h2 {
     font-weight: 500;
     border: 1px solid #00BFA5;
 }
-/* Requirements Section - Mini Card Design */
 .requirements {
   background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
   border-radius: 12px;
@@ -237,7 +264,7 @@ h2 {
   width: 100px;
   height: 100px;
   margin: 0 auto 10px;
-  overflow: hidden;   /* ensures image stays within circle */
+  overflow: hidden;   
   display: flex;
   justify-content: center;
   align-items: center;
@@ -248,7 +275,7 @@ h2 {
 .career-icon img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* maintains aspect ratio and fills the circle */
+  object-fit: cover; 
 }
 .back-btn {
   background-color: white;
@@ -284,7 +311,6 @@ h2 {
   left: 0;
 }
 
-/* Adjust back button size */
 .back-btn {
   display: flex;
   align-items: center;
@@ -325,38 +351,29 @@ h2 {
 /* Small screen adjustments */
 @media (max-width: 768px) {
   .page-header {
-    flex-direction: column;   /* stack vertically */
-    align-items: center;      /* title stays centered */
-    gap: 8px;                 /* spacing between title and button */
+    flex-direction: column;   
+    align-items: center;      
+    gap: 8px;                 
     margin-bottom: 20px;
   }
 
   .page-header h2 {
     font-size: 1.6rem;
-    text-align: center;       /* title stays centered */
+    text-align: center;       
     width: 100%;
   }
 
   .page-header .back-btn {
-    position: static;         /* remove absolute positioning */
-    align-self: flex-start;   /* button aligned to left */
+    position: static;         
+    align-self: flex-start;   
     font-size: 14px;
     padding: 6px 16px;
-    margin-top: 4px;          /* spacing below title */
-    width: auto;              /* fit content */
+    margin-top: 4px;          
+    width: auto;              
   }
 }
 
 
- @media (max-width: 768px) {
-    .careers-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .career-card {
-        min-height: 350px; 
-        width: 90%; 
-    }
-}
 
 
