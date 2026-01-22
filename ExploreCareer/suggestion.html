@@ -4,11 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Suggested Careers</title>
+
     <link rel="stylesheet" href="../css/suggest.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+    <!-- Career data -->
     <script src="../js/careerData.js"></script>
   </head>
+
   <body>
+    <!-- HEADER -->
     <header class="resume-header">
       <div class="logo">
         <a href="../index.html">
@@ -21,49 +35,115 @@
       </div>
     </header>
 
+    <!-- CONTENT -->
     <div class="container">
-      <h2>Suggested Careers</h2>
+    <div class="page-header">
+        <button
+          class="back-btn"
+          onclick="window.location.href='user-type.html'"
+        >
+        <span class="material-symbols-outlined back-icon">arrow_back</span>
+        Explore Again
+        </button>
+
+
+        <h2 id="pageTitle">Suggested Careers</h2>
+      </div>
+
       <div class="careers-grid" id="careersGrid"></div>
     </div>
 
     <script>
-      /* User selection */
+      /* =========================
+         GET USER SELECTION
+      ========================== */
       function getUserSelection() {
         return {
+          userType: localStorage.getItem("userType"), // SPM Leavers | Job Seeker
           interest: localStorage.getItem("interest"),
           background: localStorage.getItem("background"),
           skills: JSON.parse(localStorage.getItem("skills")) || [],
         };
       }
 
-      /* Score career - console*/
+      /* =========================
+         SCORE CAREERS
+      ========================== */
       function scoreCareers() {
         const user = getUserSelection();
-        const selectedSkills = user.skills.slice(0, 3); // exactly 3 skills
 
-        return careerData.map(career => {
+        return careerData.map((career) => {
           let score = 0;
 
           if (career.interests.includes(user.interest)) score += 3;
           if (career.backgrounds.includes(user.background)) score += 2;
 
-          selectedSkills.forEach(skill => {
+          user.skills.forEach((skill) => {
             if (career.skills.includes(skill)) score += 1;
           });
 
-          console.log(`Career: ${career.title} | Score: ${score}`);
           return { ...career, score };
         });
       }
 
-      /* Display 3 career*/
+      /* =========================
+        RENDER REQUIREMENTS
+      ========================== */
+      function renderRequirements(career, userType) {
+        /* ---- SPM LEAVERS ---- */
+        if (userType === "SPM Leavers" && career.spm) {
+          const req = career.spm;
+          return `
+            <div class="requirements">
+              <h4>SPM Requirements</h4>
+              <p><strong>Minimum Qualification:</strong> ${req.education}</p>
+              <ul class="subjects">
+                ${req.subjects
+                  .map(sub => `
+                    <li>
+                      <span class="subject-name">${sub.name}</span>
+                      <span class="subject-grade">${sub.grade}</span>
+                    </li>`).join("")}
+              </ul>
+              <p class="notes">${req.notes}</p>
+            </div>
+          `;
+        }
+
+        /* ---- JOB SEEKERS ---- */
+        if (career.jobSeeker) {
+          const jobReq = career.jobSeeker;
+          // Show only first 2 courses
+          const limitedCourses = jobReq.courses.slice(0, 2);
+
+          return `
+            <div class="requirements">
+              <h4>Career Requirements</h4>
+              <p><strong>Minimum Qualification:</strong> ${jobReq.education}</p>
+              <p><strong>Recommended Course(s):</strong></p>
+              <ul class="subjects">
+                ${limitedCourses.map(course => `<li>${course}</li>`).join("")}
+              </ul>
+              <p class="notes">${jobReq.notes}</p>
+              <p class="view-full"><em>View full recommended courses in the Career Information page</em></p>
+            </div>
+          `;
+        }
+
+        return "";
+      }
+
+      /* =========================
+         DISPLAY CAREERS
+      ========================== */
       function displayCareers() {
         const grid = document.getElementById("careersGrid");
+        const pageTitle = document.getElementById("pageTitle");
+        const user = getUserSelection();
 
         const careers = scoreCareers()
-          .filter(career => career.score > 0)
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 3); // show top 3
+          .filter((career) => career.score > 0)
+          .sort((a, b) => b.score - a.score); // SHOW ALL
 
         grid.innerHTML = "";
 
@@ -72,44 +152,36 @@
           return;
         }
 
-        careers.forEach(career => {
+        careers.forEach((career) => {
           const card = document.createElement("div");
           card.className = "career-card";
 
           card.innerHTML = `
-          <div class="career-icon">
-            <img src="${career.image}" alt="${career.name}" />
-          </div>
-          <h3 class="career-title">${career.title}</h3>
-          <p class="career-description">${career.description}</p>
-          <div class="skills">
-            ${career.skills
-              .map((skill) => `<span class="skill-tag">${skill}</span>`)
-              .join("")}
-          </div>
-          <div class="requirements">
-          <h4>Requirements</h4>
-          <p class="education">
-            <strong>Education:</strong> ${career.requirements.education}
-          </p>
-          <ul class="subjects">
-            ${career.requirements.subjects.map(sub =>
-              `<li>
-                <span class="subject-name">${sub.name}</span>
-                <span class="subject-grade">${sub.grade}</span>
-              </li>`
-            ).join("")}
-          </ul>
-          <p class="notes">${career.requirements.notes}</p>
-        </div>
-        <button class="view-details-btn">View Details</button>
-      `;
+            <div class="career-icon">
+              <img src="${career.image}" alt="${career.title}" />
+            </div>
 
-          // view detail button
+            <h3 class="career-title">${career.title}</h3>
+            <p class="career-description">${career.description}</p>
+
+            <div class="skills">
+              ${career.skills
+                .map((skill) => `<span class="skill-tag">${skill}</span>`)
+                .join("")}
+            </div>
+
+            ${renderRequirements(career, user.userType)}
+
+            <button class="view-details-btn">View Details</button>
+          `;
+
           card
             .querySelector(".view-details-btn")
             .addEventListener("click", () => {
-              localStorage.setItem("selectedCareer", JSON.stringify(career));
+              localStorage.setItem(
+                "selectedCareer",
+                JSON.stringify(career)
+              );
               window.location.href = "career-information.html";
             });
 

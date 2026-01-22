@@ -18,14 +18,14 @@ h2 {
 }
 
 .container {
-  max-width: 1200px;       
+  max-width: 1500px;       
   margin: 0 auto;         
   padding: 20px;
 }
 
 .careers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   justify-items: center;  
 }
@@ -250,8 +250,86 @@ h2 {
   height: 100%;
   object-fit: cover; /* maintains aspect ratio and fills the circle */
 }
+.back-btn {
+  background-color: white;
+  color: #00a896;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
 
+@media (max-width: 600px) {
+  .page-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .page-header .back-btn {
+    position: static;
+    align-self: flex-start;
+  }
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* keeps title centered */
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* Back button stays on the left */
+.page-header .back-btn {
+  position: absolute;
+  left: 0;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background-color: transparent;
+  color: #00ad8e;
+
+  padding: 12px 28px;        /* bigger click area */
+  border-radius: 30px;
+  border: 2px solid #00ad8e;
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: 
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.back-btn:hover {
+  background-color: #00ad8e;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 173, 142, 0.35);
+}
+
+/* Active (click) feedback */
+.back-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 173, 142, 0.25);
+}
 
 
 
