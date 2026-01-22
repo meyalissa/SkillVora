@@ -134,3 +134,51 @@ h2 {
   opacity: 0.5;
   cursor: not-allowed;
 }
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+
+  .container {
+    padding: 0 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .helper-text {
+    font-size: 12px;
+  }
+
+  .selection-preview {
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .skills-list {
+    gap: 10px;
+  }
+
+  .skill {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 13px;
+  }
+  .skills-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .back-btn,
+  .next-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
